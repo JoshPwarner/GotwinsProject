@@ -55,14 +55,24 @@ console.log(new Intl.DateTimeFormat('en-GB', options).format(now));
 
 
 submitBtn.addEventListener('click', async (e) => {
+    querySelectorAll(':scope > div')
     e.preventDefault();
     const titleData = document.getElementById('title-input').value;
     const categoryData = document.getElementById('category-input').value;  
     const storyData = document.getElementById('story-input').value;
+    fetch('url')
+    .then(response => response.text())
+    .then(data => JSON.parse(data))
+
     let newObject = {
-        title: titleData,
-        category: categoryData,
-        story: storyData,
+        postID: 1, // 1
+        category: categoryData, // career
+        story: storyData, // I'm a genius
+        comments: [], 
+        reactions: {fire: 0,
+                    thumbs: 0,
+                     smiley: 0},
+        gifs: '',
     }
     await fetch('http://localhost:5000/api/posts/career', {
         method: 'POST',
@@ -74,4 +84,5 @@ submitBtn.addEventListener('click', async (e) => {
     })
     .then(response => console.log(response));
 })
+    
     

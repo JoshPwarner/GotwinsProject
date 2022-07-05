@@ -1,1 +1,49 @@
-{"allPosts":[{"title":"wwwq","category":"career","story":"wqwqw"},{"title":"James Josh","category":"career","story":"Stefan James"},{"title":"324334","category":"career","story":"ewrfwrew"},{"title":"44434","category":"career","story":"433434"}]}
+{
+    "allPosts": {
+        "career": {
+            "posts": [
+                {
+                    "postID": 1,
+                    "category": "career",
+                    "story": "Got a job",
+                    "comments": [],
+                    "reactions": {
+                        "fire": 0,
+                        "thumbs": 0,
+                        "smiley": 0
+                    }, 
+                    "gifs": ""
+                }
+            ]
+        },
+        "family": {
+            "posts": [{
+                "postID": 1,
+                "category": "family",
+                "story": "Had a kid",
+                "comments": [],
+                "reactions": {
+                    "fire": 0,
+                    "thumbs": 0,
+                    "smiley": 0
+                }, 
+                "gifs": ""
+            }]
+        }, 
+        "relationships": {
+            "posts": [{
+                "userID": 1,
+                "category": "relationships",
+                "story": "Got a gf",
+                "comments": [],
+                "reactions": {
+                    "fire": 0,
+                    "thumbs": 0,
+                    "smiley": 0
+                }, 
+                "gifs": ""
+            }]
+        }
+        
+    }
+}
