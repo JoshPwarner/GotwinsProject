@@ -34,7 +34,21 @@
             "posts": [{
                 "userID": 1,
                 "category": "relationships",
-                "story": "Got a gf",
+                "story": "Got a new gf",
+                "comments": [],
+                "reactions": {
+                    "fire": 0,
+                    "thumbs": 0,
+                    "smiley": 0
+                }, 
+                "gifs": ""
+            }]
+        },
+        "general": {
+            "posts": [{
+                "userID": 1,
+                "category": "general",
+                "story": "Won a holiday",
                 "comments": [],
                 "reactions": {
                     "fire": 0,

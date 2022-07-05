@@ -6,7 +6,7 @@ const postsAndComments = require('./controllers/postsAndComments');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const urlEncodedParser = bodyParser.urlencoded({extended: false});
-const posts = require('./data');
+
 
 
 app.use('/api/posts', postsAndComments);
