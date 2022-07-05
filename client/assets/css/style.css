@@ -47,6 +47,7 @@ header {
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
+    padding-inline: 1rem;
 }
 
 .navbar-brand {
