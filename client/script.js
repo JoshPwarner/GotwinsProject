@@ -65,15 +65,14 @@ submitBtn.addEventListener('click', async (e) => {
     .then(data => JSON.parse(data))
 
     let newObject = {
-        userID: 1, // 1
+        postID: 1, // 1
         category: categoryData, // career
         story: storyData, // I'm a genius
         comments: [], 
         reactions: {fire: 0,
                     thumbs: 0,
                      smiley: 0},
-        
-
+        gifs: '',
     }
     await fetch('http://localhost:5000/api/posts/career', {
         method: 'POST',
