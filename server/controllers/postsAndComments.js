@@ -44,6 +44,12 @@ router.post('/career', urlEncodedParser, (req, res) => {
 
 })
 
+router.get('/')
+
+router,post('/family', urlEncodedParser, (req, res) => {
+    const { title, category, story, comments } = req.body;
+})
+
 
 router.all('*', (req, res) => {
     res.send(`<h1>Error, broken URL</h1>`);
