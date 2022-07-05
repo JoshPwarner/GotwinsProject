@@ -4,9 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const urlEncodedParser = bodyParser.urlencoded({extended: false});
-const posts = require('../data');
-const { readFileSync, writeFileSync, readFile, writeFile }= require('fs');  
-const data = require('../') 
+const { readFileSync, writeFileSync, readFile, writeFile } = require('fs');  
 const jsonfile = require('jsonfile')
 
 async function writeJSON(postData){
@@ -36,6 +34,13 @@ function readJSONRelationships() {
     let wholeFile = readFileSync('../data.json', 'utf8');
     wholeFile = JSON.parse(wholeFile);
     return wholeFile.allPosts.relationships;
+
+}
+
+function readJSONGeneral() {
+    let wholeFile = readFileSync('../data.json', 'utf8');
+    wholeFile = JSON.parse(wholeFile);
+    return wholeFile.allPosts.general;
 
 }
 
@@ -73,6 +78,21 @@ router.post('/family', urlEncodedParser, (req, res) => {
 
 router.get('/relationships', (req, res) => {
     res.send(readJSONRelationships());
+})
+
+router.post('/relationships', urlEncodedParser, (req, res) => {
+    const { postID, category, story, comments, reactions, gifs } = req.body;
+    console.log(req.body);
+    let wholeFile = readFileSync('../data.json', 'utf8');
+    wholeFile = JSON.parse(wholeFile);
+    let newFile = wholeFile.allPosts.relationships.posts;
+    jsonfile.writeFile('../data.json', JSON.stringify(req.body, null, 4), {flag : 'a'} )
+
+
+})
+
+router.get('/general', (req, res) => {
+    res.send(readJSONGeneral());
 })
 
 
