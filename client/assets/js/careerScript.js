@@ -45,7 +45,7 @@ function fetchPosts() {
                     let reactionsBox = item.reactions;
                     let gifsBox = item.gifs;
                     console.log(storyBox);
-                    
+                    let newDiv = document.createElement('div');
                     let overallPost = `<section class="post">
                     <div class="date">
                         <div class="avatar">
@@ -86,8 +86,9 @@ function fetchPosts() {
                         </div>
                     </div>
                 </section>`
-                
-                document.getElementById('posts-container-career').innerHTML = overallPost + `<br>`;
+                newDiv.innerHTML = overallPost;
+                newDiv.style.margin = '2rem 0 2rem 0';
+                document.getElementById('posts-container-career').insertAdjacentElement('afterbegin', newDiv);
                 })
             })
         
