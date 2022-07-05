@@ -1,1 +1,8 @@
-{"allPosts":[{"title":"wwwq","category":"career","story":"wqwqw"},{"title":"James Josh","category":"career","story":"Stefan James"},{"title":"324334","category":"career","story":"ewrfwrew"},{"title":"44434","category":"career","story":"433434"}]}
+{"allPosts":{"career": {"posts": [{"userID": 1, "comments": ["Good job, bro!", "Cool!"]},
+                                   {"userID": 2, "comments": [] ]
+},
+             "family": [],
+             "fitness": [],
+             "general": []}
+}
+
