@@ -18,8 +18,25 @@ async function writeJSON(postData){
 
 }
 
-function readJSON() {
-    return readFileSync('../data.json', 'utf8');
+function readJSONCareer() {
+    let wholeFile = readFileSync('../data.json', 'utf8');
+    wholeFile = JSON.parse(wholeFile);
+    return wholeFile.allPosts.career;
+
+}
+
+function readJSONFamily() {
+    let wholeFile = readFileSync('../data.json', 'utf8');
+    wholeFile = JSON.parse(wholeFile);
+    return wholeFile.allPosts.family;
+
+}
+
+function readJSONRelationships() {
+    let wholeFile = readFileSync('../data.json', 'utf8');
+    wholeFile = JSON.parse(wholeFile);
+    return wholeFile.allPosts.relationships;
+
 }
 
 
@@ -32,7 +49,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/career', (req, res) => {
-    res.send(readJSON());
+    res.send(readJSONCareer());
 })
 
 router.post('/career', urlEncodedParser, (req, res) => {
@@ -44,10 +61,18 @@ router.post('/career', urlEncodedParser, (req, res) => {
 
 })
 
-router.get('/')
+router.get('/family', (req, res) => {
+    res.send(readJSONFamily());
 
-router,post('/family', urlEncodedParser, (req, res) => {
-    const { title, category, story, comments } = req.body;
+
+})
+
+router.post('/family', urlEncodedParser, (req, res) => {
+    const { postID, category, story, comments, reactions, gifs } = req.body;
+})
+
+router.get('/relationships', (req, res) => {
+    res.send(readJSONRelationships());
 })
 
 
