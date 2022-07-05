@@ -57,7 +57,6 @@ console.log(new Intl.DateTimeFormat('en-GB', options).format(now));
 submitBtn.addEventListener('click', async (e) => {
     querySelectorAll(':scope > div')
     e.preventDefault();
-    const titleData = document.getElementById('title-input').value;
     const categoryData = document.getElementById('category-input').value;  
     const storyData = document.getElementById('story-input').value;
     fetch('url')
