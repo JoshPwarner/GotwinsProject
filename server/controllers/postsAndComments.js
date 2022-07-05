@@ -86,6 +86,7 @@ router.get('/career', (req, res) => {
 
 router.post('/career', urlEncodedParser, (req, res) => {
     const { time, postID, category, story, comments, reactions, gifs } = req.body;
+    console.log(req.body);
     let postData  = req.body;
     writeJSONCareer(postData);
 
