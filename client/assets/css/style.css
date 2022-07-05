@@ -47,6 +47,7 @@ header {
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
+    padding-inline: 1rem;
 }
 
 .navbar-brand {
@@ -162,6 +163,44 @@ footer .socials .social-list li .social-link i {
     }
 
     header {
+        padding-inline: 3rem;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    html {
+        font-size: 78%;
+    }
+
+    header {
         padding-inline: 6rem;
+    }
+
+    .hero .hero-content .main-heading {
+        font-size: 4rem;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    html {
+        font-size: 84%;
+    }
+
+    header {
+        padding-inline: 10rem;
+    }
+    .hero .hero-content .main-heading {
+        font-size: 4.2rem;
+        line-height: 1.5;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    header {
+        padding-inline: 15rem;
+    }
+
+    html {
+        font-size: 90%;
     }
 }

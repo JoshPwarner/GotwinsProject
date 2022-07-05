@@ -1,0 +1,293 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --text-grey: #6d6d6d;
+    --text-grey-light: #b0b0b0;
+    --text-white: #fff;
+    --bg-dark: #3e424b;
+
+    --bg-light: #fafafa;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: inherit;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+.dropdown-menu[data-bs-popper] {
+    left: unset;
+}
+
+.navbar-nav .dropdown-menu {
+    position: absolute;
+    right: 0.3rem;
+}
+
+header {
+    min-height: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding-inline: 1rem;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-grey);
+}
+
+.nav-link,
+.dropdown-item {
+    font-size: 1.4rem;
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: 500;
+}
+
+.dropdown-item.active {
+    background-color: #e6e6e6;
+    color: var(--text-grey);
+}
+
+.push-down {
+    height: 6rem;
+}
+
+main {
+    min-height: 100vh;
+    background-color: var(--bg-light);
+}
+
+.main-heading {
+    font-size: 3.2rem;
+    margin-top: 4rem;
+    font-weight: 900;
+    color: var(--text-grey);
+    line-height: 1.7;
+    text-align: center;
+}
+
+.new-post {
+    margin-top: 4rem;
+}
+
+.secondary-heading {
+    color: var(--text-grey);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form-box {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: var(--text-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.4rem;
+    color: var(--text-grey-light);
+    overflow: hidden;
+}
+
+.avatar i {
+    transform: translateY(0.5rem);
+}
+
+.new-post-form {
+    width: calc(100% - 4rem);
+}
+
+.new-post-form > textarea {
+    resize: none;
+    overflow-y: scroll;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    width: 100%;
+    outline: none;
+    padding: 1rem;
+    border-radius: 1.2rem;
+}
+
+.buttons {
+    margin-top: 1rem;
+    padding-left: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.buttons .submit {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--text-white);
+    background-color: var(--bg-dark);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.7rem;
+    margin-right: 1.2rem;
+}
+
+.add-emoji {
+    font-size: 2rem;
+}
+
+.posts-box {
+    margin-top: 4rem;
+}
+
+.post {
+    padding: 2rem 1.2rem;
+    background-color: var(--text-white);
+    border-radius: 1.2rem;
+    /* box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2); */
+    filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.2));
+}
+
+.post .date {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.post .date .date-text {
+    font-size: 1.2rem;
+    color: var(--text-grey);
+    font-weight: 500;
+}
+
+.post .post-content {
+    color: var(--text-grey);
+    font-size: 1.8rem;
+    font-weight: 300;
+    padding-bottom: 1rem;
+}
+
+.divider {
+    color: var(--text-grey-light);
+}
+
+.add-comment {
+    margin-top: 2rem;
+}
+
+.comments {
+    margin-top: 3rem;
+    padding-left: 4rem;
+}
+
+.comment-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.comment-container .comment-text {
+    color: var(--text-grey);
+    font-size: 1.3rem;
+}
+
+footer {
+    min-height: 8rem;
+    background-color: var(--bg-dark);
+    padding: 2rem 1rem;
+    text-align: center;
+    color: var(--text-white);
+}
+
+footer .footer-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+footer .socials {
+    margin-top: 2rem;
+}
+
+footer .socials .social-list {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+footer .socials .social-list li .social-link i {
+    font-size: 1.9rem;
+    color: var(--text-white);
+}
+
+@media only screen and (min-width: 500px) {
+    html {
+        font-size: 70%;
+    }
+
+    header {
+        padding-inline: 3rem;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    html {
+        font-size: 78%;
+    }
+
+    header {
+        padding-inline: 6rem;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    html {
+        font-size: 84%;
+    }
+
+    header {
+        padding-inline: 10rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    header {
+        padding-inline: 15rem;
+    }
+
+    html {
+        font-size: 90%;
+    }
+}
