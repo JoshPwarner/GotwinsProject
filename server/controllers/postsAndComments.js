@@ -7,23 +7,40 @@ const urlEncodedParser = bodyParser.urlencoded({extended: false});
 const { readFileSync, writeFileSync, readFile, writeFile } = require('fs');  
 const jsonfile = require('jsonfile')
 
-// async function writeJSON(postData){
-//     let data = await jsonfile.readFile('../data.json', 'utf8');
+async function writeJSONCareer(postData){
+    let data = await jsonfile.readFile('../data.json', 'utf8');
     
-//         data.allPosts.push(postData)
-//         console.log(true)
-//         await jsonfile.writeFile('../data.json', data);
+        data.allPosts.career.posts.push(postData)
+        await jsonfile.writeFile('../data.json', data);
 
-// }
+}
+
+async function writeJSONFamily(postData){
+    let data = await jsonfile.readFile('../data.json', 'utf8');
+    
+        data.allPosts.family.posts.push(postData)
+        await jsonfile.writeFile('../data.json', data);
+
+}
+
 
 async function writeJSONRelationships(postData){
     let data = await jsonfile.readFile('../data.json', 'utf8');
     
         data.allPosts.relationships.posts.push(postData)
-        console.log(true)
         await jsonfile.writeFile('../data.json', data);
 
 }
+
+async function writeJSONGeneral(postData){
+    let data = await jsonfile.readFile('../data.json', 'utf8');
+    
+        data.allPosts.general.posts.push(postData)
+        await jsonfile.writeFile('../data.json', data);
+
+}
+
+
 
 function readJSONCareer() {
     let wholeFile = readFileSync('../data.json', 'utf8');
@@ -46,6 +63,7 @@ function readJSONRelationships() {
 
 }
 
+
 function readJSONGeneral() {
     let wholeFile = readFileSync('../data.json', 'utf8');
     wholeFile = JSON.parse(wholeFile);
@@ -67,11 +85,9 @@ router.get('/career', (req, res) => {
 })
 
 router.post('/career', urlEncodedParser, (req, res) => {
-    const { title, category, story } = req.body;
-    writeJSON(req.body);
-    if ( title && category && story) {
-        return res.send(readJSON());
-    }
+    const { time, postID, category, story, comments, reactions, gifs } = req.body;
+    let postData  = req.body;
+    writeJSONCareer(postData);
 
 })
 
@@ -82,7 +98,9 @@ router.get('/family', (req, res) => {
 })
 
 router.post('/family', urlEncodedParser, (req, res) => {
-    const { postID, category, story, comments, reactions, gifs } = req.body;
+    const { time, postID, category, story, comments, reactions, gifs } = req.body;
+    let postData  = req.body;
+    writeJSONFamily(postData);
 })
 
 router.get('/relationships', (req, res) => {
@@ -90,18 +108,20 @@ router.get('/relationships', (req, res) => {
 })
 
 router.post('/relationships', urlEncodedParser, (req, res) => {
-    const { postID, category, story, comments, reactions, gifs } = req.body;
-    // console.log(req.body);
-    // let wholeFile = readFileSync('../data.json', 'utf8');
-    // wholeFile = JSON.parse(wholeFile);
-    // let newFile = wholeFile.allPosts.relationships.posts;
-    // jsonfile.writeFile('../data.json', JSON.stringify(req.body, null, 4), {flag : 'a'} )
+    const { time, postID, category, story, comments, reactions, gifs } = req.body;
     let postData  = req.body;
     writeJSONRelationships(postData);
 })
 
 router.get('/general', (req, res) => {
     res.send(readJSONGeneral());
+})
+
+router.post('/general', (req, res) => {
+    const { time, postID, category, story, comments, reactions, gifs } = req.body;
+    let postData  = req.body;
+    writeJSONGeneral(postData);
+
 })
 
 

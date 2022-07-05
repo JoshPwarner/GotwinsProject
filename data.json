@@ -1,79 +1,18 @@
 {
     "allPosts": {
         "career": {
-            "posts": [
-                {
-                    "postID": 1,
-                    "category": "career",
-                    "story": "Got a job",
-                    "comments": [],
-                    "reactions": {
-                        "fire": 0,
-                        "thumbs": 0,
-                        "smiley": 0
-                    },
-                    "gifs": ""
-                }
-            ]
+            "posts": []
         },
         "family": {
-            "posts": [
-                {
-                    "postID": 1,
-                    "category": "family",
-                    "story": "Had a kid",
-                    "comments": [],
-                    "reactions": {
-                        "fire": 0,
-                        "thumbs": 0,
-                        "smiley": 0
-                    },
-                    "gifs": ""
-                }
-            ]
+            "posts": []
         },
         "relationships": {
             "posts": [
                 {
-                    "userID": 1,
+                    "time": "Tuesday, 5 July 2022, 5:26 pm",
+                    "postID": 1,
                     "category": "relationships",
-                    "story": "Got a new gf",
-                    "comments": [],
-                    "reactions": {
-                        "fire": 0,
-                        "thumbs": 0,
-                        "smiley": 0
-                    },
-                    "gifs": ""
-                },
-                {
-                    "postID": 2,
-                    "category": "relationships",
-                    "story": "albert einstein",
-                    "comments": [],
-                    "reactions": {
-                        "fire": 0,
-                        "thumbs": 0,
-                        "smiley": 0
-                    },
-                    "gifs": ""
-                },
-                {
-                    "postID": 3,
-                    "category": "relationships",
-                    "story": "",
-                    "comments": [],
-                    "reactions": {
-                        "fire": 0,
-                        "thumbs": 0,
-                        "smiley": 0
-                    },
-                    "gifs": ""
-                },
-                {
-                    "postID": 4,
-                    "category": "relationships",
-                    "story": "albert einstein",
+                    "story": "alan turing",
                     "comments": [],
                     "reactions": {
                         "fire": 0,
@@ -85,20 +24,7 @@
             ]
         },
         "general": {
-            "posts": [
-                {
-                    "userID": 1,
-                    "category": "general",
-                    "story": "Won a holiday",
-                    "comments": [],
-                    "reactions": {
-                        "fire": 0,
-                        "thumbs": 0,
-                        "smiley": 0
-                    },
-                    "gifs": ""
-                }
-            ]
+            "posts": []
         }
     }
 }
