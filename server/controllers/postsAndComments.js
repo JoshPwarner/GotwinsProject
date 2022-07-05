@@ -7,10 +7,19 @@ const urlEncodedParser = bodyParser.urlencoded({extended: false});
 const { readFileSync, writeFileSync, readFile, writeFile } = require('fs');  
 const jsonfile = require('jsonfile')
 
-async function writeJSON(postData){
+// async function writeJSON(postData){
+//     let data = await jsonfile.readFile('../data.json', 'utf8');
+    
+//         data.allPosts.push(postData)
+//         console.log(true)
+//         await jsonfile.writeFile('../data.json', data);
+
+// }
+
+async function writeJSONRelationships(postData){
     let data = await jsonfile.readFile('../data.json', 'utf8');
     
-        data.allPosts.push(postData)
+        data.allPosts.relationships.posts.push(postData)
         console.log(true)
         await jsonfile.writeFile('../data.json', data);
 
@@ -82,13 +91,13 @@ router.get('/relationships', (req, res) => {
 
 router.post('/relationships', urlEncodedParser, (req, res) => {
     const { postID, category, story, comments, reactions, gifs } = req.body;
-    console.log(req.body);
-    let wholeFile = readFileSync('../data.json', 'utf8');
-    wholeFile = JSON.parse(wholeFile);
-    let newFile = wholeFile.allPosts.relationships.posts;
-    jsonfile.writeFile('../data.json', JSON.stringify(req.body, null, 4), {flag : 'a'} )
-
-
+    // console.log(req.body);
+    // let wholeFile = readFileSync('../data.json', 'utf8');
+    // wholeFile = JSON.parse(wholeFile);
+    // let newFile = wholeFile.allPosts.relationships.posts;
+    // jsonfile.writeFile('../data.json', JSON.stringify(req.body, null, 4), {flag : 'a'} )
+    let postData  = req.body;
+    writeJSONRelationships(postData);
 })
 
 router.get('/general', (req, res) => {
