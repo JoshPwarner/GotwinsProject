@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios Experiment</title>
+    <link rel="stylesheet" href="./client/style.css">
+    <script src="./client/script.js" type="text/javascript" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <form id="post-form">
+        <div class="form-row">
+            <label for="title-input">Title:</label>
+            <input type="text" id="title-input" name="title">
+        </div>
+        <div  id="category-row" class="form-row">
+            <label for="category-input">Category:</label>
+            <select id="category-input">
+                <option value="career">
+                    Career
+                </option>
+            </select>
+        </div>
+        <div class="form-row">
+            <label for="story-input">Story:</label>
+            <input type="text" id="story-input" name="story">
+        </div>
+        <button type="submit" id="submit-btn" class="post-btn">Post</button>
+    </form>
+    <div id="posts">
+
+    </div>
+    
+</body>
+</html>
