@@ -4,7 +4,7 @@ function getTime() {
     const now = new Date();
     const options1 = {
         hour: 'numeric',
-        hour12: true,
+        hour12: false,
         minute: 'numeric',
         weekday: 'long',
         day: 'numeric',
@@ -60,7 +60,7 @@ function fetchPosts() {
                                     required
                                 ></textarea>
                                 <div class="buttons">
-                                    <button id="submit-btn-${postIdBox} "class="button submit" type="submit">Post</button>
+                                    <button id="submit-btn-${postIdBox}" class="button submit" type="submit">Post</button>
                                 </div>
                             </form>
                         </div>
@@ -74,17 +74,32 @@ function fetchPosts() {
                 newDiv.innerHTML = overallPost;
                 newDiv.style.margin = '2rem 0 2rem 0';
                 document.getElementById('posts-container-career').insertAdjacentElement('afterbegin', newDiv);
-                })
                 document.getElementById(`submit-btn-${postIdBox}`).addEventListener('click', (e) => {
                     e.preventDefault();
                     if (document.getElementById(`new-post-career-${postIdBox}`).value !== '') {
-                           fetch(`localhost:5000/api/posts/${postIdBox}/comments`, {
+                           console.log(document.getElementById(`new-post-career-${postIdBox}`).value);
+                           let url = 'http://localhost:5000/api/posts/career/';
+                           url += postIdBox;
+                           url += '/comments'
+                           let commentValue = document.getElementById(`new-post-career-${postIdBox}`).value;
+                           fetch(url, {
                             method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                comment: commentValue, 
+                                postID: postIdBox,
+                            })
 
                            })
+                    } else {
+                        alert('Please input something to post');
                     }
                     
                 })
+                })
+                
             })
         
              

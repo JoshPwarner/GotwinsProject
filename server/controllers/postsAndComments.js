@@ -16,6 +16,16 @@ async function writeJSONCareer(postData){
 
 }
 
+async function writeJSONCareerComments(postData, reqId){
+    let data = await jsonfile.readFile('../data.json', 'utf8');
+    reqId = parseInt(reqId) - 1;
+    data.allPosts.career.posts[reqId].comments.push(postData);
+    await jsonfile.writeFile('../data.json', data);
+
+}
+
+
+
 async function writeJSONFamily(postData){
     let data = await jsonfile.readFile('../data.json', 'utf8');
     
@@ -87,20 +97,44 @@ router.get('/career', (req, res) => {
 
 router.post('/career', urlEncodedParser, (req, res) => {
     const { time, postID, category, story, comments, reactions, gifs } = req.body;
-    console.log(req.body);
     let postData  = req.body;
     writeJSONCareer(postData);
 
 })
 
 router.get('/career/:id', (req, res) => {
+    try {
+        const idNumber = parseInt(req.params.id);
+        res.send(allJsonData.allPosts.career.posts[idNumber - 1]);
+    } catch {
+        res.send(err);
+
+    }
+    
 
 })
 
+router.get('/career/:id/comments', (req, res) => {
+    try {
+        const idNumber = parseInt(req.params.id);
+        res.send(allJsonData.allPosts.career.posts[idNumber - 1].comments);
+    }
+    catch {
+        res.send(err);
 
-router.get('/career/:id/comments')
+    }
+})
 
 router.post('/career/:id/comments', urlEncodedParser, (req, res) => {
+    try {
+        const { comment, postID } = req.body;
+        console.log(comment);
+        writeJSONCareerComments(comment, postID);
+    }
+    catch {
+        console.log(err);
+    }
+
     
 })
 
