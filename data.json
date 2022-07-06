@@ -3,10 +3,10 @@
         "career": {
             "posts": [
                 {
-                    "time": "Tuesday, 5 July 2022, 8:53 pm",
+                    "time": "Wednesday, 6 July 2022, 12:38",
                     "postID": 1,
                     "category": "career",
-                    "story": "dfvasdfvcsadcsad",
+                    "story": "ThomasEdison",
                     "comments": [],
                     "reactions": {
                         "fire": 0,
@@ -16,7 +16,7 @@
                     "gifs": ""
                 },
                 {
-                    "time": "Tuesday, 5 July 2022, 8:59 pm",
+                    "time": "Wednesday, 6 July 2022, 12:40",
                     "postID": 2,
                     "category": "career",
                     "story": "nikola tesla",
@@ -29,10 +29,10 @@
                     "gifs": ""
                 },
                 {
-                    "time": "Tuesday, 5 July 2022, 9:45 pm",
+                    "time": "Wednesday, 6 July 2022, 12:42",
                     "postID": 3,
                     "category": "career",
-                    "story": "Albert Einstein",
+                    "story": "Alan turing",
                     "comments": [],
                     "reactions": {
                         "fire": 0,
@@ -42,11 +42,26 @@
                     "gifs": ""
                 },
                 {
-                    "time": "Tuesday, 5 July 2022, 10:38 pm",
+                    "time": "Wednesday, 6 July 2022, 12:55",
                     "postID": 4,
                     "category": "career",
-                    "story": "hello goodbye",
+                    "story": "Abraham Lincoln",
                     "comments": [],
+                    "reactions": {
+                        "fire": 0,
+                        "thumbs": 0,
+                        "smiley": 0
+                    },
+                    "gifs": ""
+                },
+                {
+                    "time": "Wednesday, 6 July 2022, 12:56",
+                    "postID": 5,
+                    "category": "career",
+                    "story": "Winston Churchill",
+                    "comments": [
+                        "adios"
+                    ],
                     "reactions": {
                         "fire": 0,
                         "thumbs": 0,
@@ -57,7 +72,34 @@
             ]
         },
         "family": {
-            "posts": []
+            "posts": [
+                {
+                    "time": "Wednesday, 6 July 2022, 10:28 am",
+                    "postID": 1,
+                    "category": "career",
+                    "story": "Sister had a baby",
+                    "comments": [],
+                    "reactions": {
+                        "fire": 0,
+                        "thumbs": 0,
+                        "smiley": 0
+                    },
+                    "gifs": ""
+                },
+                {
+                    "time": "Wednesday, 6 July 2022, 11:12 am",
+                    "postID": 2,
+                    "category": "career",
+                    "story": "Brother got married",
+                    "comments": [],
+                    "reactions": {
+                        "fire": 0,
+                        "thumbs": 0,
+                        "smiley": 0
+                    },
+                    "gifs": ""
+                }
+            ]
         },
         "relationships": {
             "posts": [
@@ -73,11 +115,77 @@
                         "smiley": 0
                     },
                     "gifs": ""
+                },
+                {
+                    "time": "Wednesday, 6 July 2022, 10:34 am",
+                    "postID": 2,
+                    "category": "career",
+                    "story": "Got a gf",
+                    "comments": [],
+                    "reactions": {
+                        "fire": 0,
+                        "thumbs": 0,
+                        "smiley": 0
+                    },
+                    "gifs": ""
+                },
+                {
+                    "time": "Wednesday, 6 July 2022, 11:12 am",
+                    "postID": 3,
+                    "category": "career",
+                    "story": "Got another gf",
+                    "comments": [],
+                    "reactions": {
+                        "fire": 0,
+                        "thumbs": 0,
+                        "smiley": 0
+                    },
+                    "gifs": ""
+                },
+                {
+                    "time": "Wednesday, 6 July 2022, 11:43 am",
+                    "postID": 4,
+                    "category": "career",
+                    "story": "This is a test",
+                    "comments": [],
+                    "reactions": {
+                        "fire": 0,
+                        "thumbs": 0,
+                        "smiley": 0
+                    },
+                    "gifs": ""
                 }
             ]
         },
         "general": {
-            "posts": []
+            "posts": [
+                {
+                    "time": "Wednesday, 6 July 2022, 10:37 am",
+                    "postID": 1,
+                    "category": "career",
+                    "story": "Won a holiday to Turkey.",
+                    "comments": [],
+                    "reactions": {
+                        "fire": 0,
+                        "thumbs": 0,
+                        "smiley": 0
+                    },
+                    "gifs": ""
+                },
+                {
+                    "time": "Wednesday, 6 July 2022, 11:11 am",
+                    "postID": 2,
+                    "category": "career",
+                    "story": "Rode my bike up Mount Everest",
+                    "comments": [],
+                    "reactions": {
+                        "fire": 0,
+                        "thumbs": 0,
+                        "smiley": 0
+                    },
+                    "gifs": ""
+                }
+            ]
         }
     }
 }
