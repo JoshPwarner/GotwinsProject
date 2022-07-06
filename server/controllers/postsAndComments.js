@@ -92,6 +92,8 @@ router.post('/career', urlEncodedParser, (req, res) => {
 
 })
 
+router.get('/career/:id/comments')
+
 router.get('/family', (req, res) => {
     res.send(readJSONFamily());
 

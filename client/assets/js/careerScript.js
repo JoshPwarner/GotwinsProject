@@ -45,7 +45,7 @@ function fetchPosts() {
                     let reactionsBox = item.reactions;
                     let gifsBox = item.gifs;
                     console.log(storyBox);
-                    
+                    let newDiv = document.createElement('div');
                     let overallPost = `<section class="post">
                     <div class="date">
                         <div class="avatar">
@@ -75,7 +75,7 @@ function fetchPosts() {
                                     required
                                 ></textarea>
                                 <div class="buttons">
-                                    <button class="button submit" type="submit">Post</button>
+                                    <button id="submit-btn-${postIdBox} "class="button submit" type="submit">Post</button>
                                 </div>
                             </form>
                         </div>
@@ -86,8 +86,13 @@ function fetchPosts() {
                         </div>
                     </div>
                 </section>`
-                
-                document.getElementById('posts-container-career').innerHTML = overallPost + `<br>`;
+                newDiv.innerHTML = overallPost;
+                newDiv.style.margin = '2rem 0 2rem 0';
+                document.getElementById('posts-container-career').insertAdjacentElement('afterbegin', newDiv);
+                })
+                document.getElementById(`submit-btn-${postIdBox}`).addEventListener('click', (e) => {
+                    e.preventDefault();
+                    fetch('url')
                 })
             })
         
