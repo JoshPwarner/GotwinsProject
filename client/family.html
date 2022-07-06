@@ -82,9 +82,32 @@
                                 placeholder="Write your post here..."
                                 required
                             ></textarea>
+                            <div id="bubble-box" class="bubble-outer">
+                                <div class="bubble">
+                                    <div class="emoji">&#128512;</div>
+                                    <div class="emoji">&#128077;</div>
+                                    <div class="emoji">&#128293;</div>
+                                    <div class="pointer"></div>
+                                </div>
+                            </div>
+                            <div id="remainig-letters">500</div>
+                            <div id="gif-outer-box" class="gif-outer-box">
+                                <img id="gif-img" class="gif-img img-fluid" src="" alt="" />
+                                <button id="remove-gif" class="close-gif" type="button">&#10799;</button>
+                            </div>
                             <div class="buttons">
                                 <button id="submit-button-family" class="button submit" type="submit">Submit</button>
-                                <button class="button add-emoji"><i class="fa-regular fa-face-grin"></i></button>
+                                <button type="button" class="button add-emoji">
+                                    <i class="fa-regular fa-face-grin"></i>
+                                </button>
+                                <button
+                                    type="button"
+                                    class="button add-gif"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#gifModal"
+                                >
+                                    <img src="./assets/images/gif.svg" alt="" />
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -103,7 +126,7 @@
                         <p>Got a new job at Google! So exited.</p>
                     </div>
                     <hr class="divider" />
-                    <div class="emoji">
+                    <div class="emoji-btn-box">
                         <button class="button add-emoji"><i class="fa-regular fa-face-grin"></i></button>
                     </div>
                     <div class="add-comment">
@@ -136,6 +159,21 @@
                     </div>
                 </section>
             </article>
+            <!-- Modal -->
+            <div class="modal fade" id="gifModal" tabindex="-1" aria-labelledby="gifModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="gifModalLabel">Choose your GIF</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="gif-container" class="modal-body"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
         <footer>
             <p class="footer-text">Created by James Thompson, Joshua Warner and Stefan Yordanov</p>

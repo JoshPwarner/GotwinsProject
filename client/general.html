@@ -36,7 +36,7 @@
                 <div class="container-fluid">
                     <ul class="navbar-nav flex-row gap-3 align-content-end mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Home</a>
+                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
                         </li>
 
                         <li class="nav-item dropdown">
@@ -84,12 +84,22 @@
                                 maxlength="500"
                                 required
                             ></textarea>
-                            <div id="gif-outer-box">
+                            <div id="bubble-box" class="bubble-outer">
+                                <div class="bubble">
+                                    <div class="emoji">&#128512;</div>
+                                    <div class="emoji">&#128077;</div>
+                                    <div class="emoji">&#128293;</div>
+                                    <div class="pointer"></div>
+                                </div>
+                            </div>
+                            <div id="remainig-letters">500</div>
+                            <div id="gif-outer-box" class="gif-outer-box">
                                 <img id="gif-img" class="gif-img img-fluid" src="" alt="" />
+                                <button id="remove-gif" class="close-gif" type="button">&#10799;</button>
                             </div>
                             <div class="buttons">
                                 <button id="submit-button-general" class="button submit" type="submit">Submit</button>
-                                <button type="button" class="button add-emoji">
+                                <button id="add-emoji-post" type="button" class="button add-emoji">
                                     <i class="fa-regular fa-face-grin"></i>
                                 </button>
                                 <button
@@ -118,7 +128,7 @@
                         <p>Got a new job at Google! So exited.</p>
                     </div>
                     <hr class="divider" />
-                    <div class="emoji">
+                    <div class="emoji-btn-box">
                         <button class="button add-emoji"><i class="fa-regular fa-face-grin"></i></button>
                     </div>
                     <div class="add-comment">
@@ -134,8 +144,7 @@
                                     rows="2"
                                     placeholder="Add a comment..."
                                     required
-                                >
-                                </textarea>
+                                ></textarea>
                                 <div class="buttons">
                                     <button id="submit-general" class="button submit" type="submit">Post</button>
                                 </div>
