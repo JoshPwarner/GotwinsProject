@@ -25,7 +25,7 @@
             integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
             crossorigin="anonymous"
         ></script>
-        <script defer src="./assets/js/careersScript.js"></script>
+        <script defer src="./assets/js/relationshipScript.js"></script>
         <title>GotWins!</title>
     </head>
     <body>
@@ -64,7 +64,7 @@
         </header>
         <section class="push-down">&nbsp;</section>
         <main class="pt-5">
-            <h1 class="main-heading">Career Posts</h1>
+            <h1 class="main-heading">Relationship Posts</h1>
             <article class="container">
                 <section class="new-post">
                     <h2 class="secondary-heading">Start a post</h2>
@@ -74,18 +74,20 @@
                         </div>
                         <form class="new-post-form">
                             <select name="category" id="category">
-                                <option value="career">career</option>
+                                <option value="relationship">relationship</option>
                             </select>
                             <textarea
                                 name="new-post"
-                                id="new-post-career"
+                                id="new-post-relationship"
                                 cols="30"
                                 rows="5"
                                 placeholder="Write your post here..."
                                 required
                             ></textarea>
                             <div class="buttons">
-                                <button id="submit-button-careers" class="button submit" type="submit">Submit</button>
+                                <button id="submit-button-relationship" class="button submit" type="submit">
+                                    Submit
+                                </button>
                                 <button class="button add-emoji"><i class="fa-regular fa-face-grin"></i></button>
                             </div>
                         </form>
@@ -93,7 +95,7 @@
                 </section>
             </article>
 
-            <article id="posts-container-career" class="container posts-box">
+            <article id="posts-container-relationship" class="container posts-box">
                 <section class="post">
                     <div class="date">
                         <div class="avatar">
@@ -116,14 +118,14 @@
                             <form class="new-comment-form">
                                 <textarea
                                     name="new-comment"
-                                    id="new-comment-career"
+                                    id="new-comment-relationship"
                                     cols="30"
                                     rows="2"
                                     placeholder="Add a comment..."
                                     required
                                 ></textarea>
                                 <div class="buttons">
-                                    <button id="submit-career" class="button submit" type="submit">Post</button>
+                                    <button id="submit-relationship" class="button submit" type="submit">Post</button>
                                 </div>
                             </form>
                         </div>
