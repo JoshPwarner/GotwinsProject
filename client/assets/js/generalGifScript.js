@@ -36,5 +36,51 @@ function insertGif(e) {
     const gifImg = document.querySelector("#gif-img");
     gifImg.src = el.src;
     const newPost = document.querySelector("#gif-outer-box");
-    newPost.classList.add("gif-outer-box");
+    newPost.classList.add("active-box");
 }
+
+function removeGif(e) {
+    e.preventDefault();
+
+    const gifImg = document.querySelector("#gif-img");
+    gifImg.src = "";
+    const newPost = document.querySelector("#gif-outer-box");
+    newPost.classList.remove("active-box");
+}
+
+document.querySelector("#remove-gif").addEventListener("click", removeGif);
+
+const textarea = document.querySelector("#new-post-general");
+const letterCount = document.querySelector("#remainig-letters");
+let maxLen = 500;
+
+textarea.addEventListener("input", () => {
+    let letters = textarea.value.length;
+    letterCount.textContent = maxLen - letters;
+});
+
+textarea.addEventListener("focus", () => {
+    letterCount.style.display = "block";
+    let letters = textarea.value.length;
+    letterCount.textContent = maxLen - letters;
+    console.log(letters);
+});
+
+textarea.addEventListener("focusout", () => {
+    letterCount.style.display = "none";
+});
+
+const bubbleBox = document.querySelector("#bubble-box");
+
+document.querySelector("#add-emoji-post").addEventListener("click", (e) => {
+    e.preventDefault();
+    bubbleBox.classList.toggle("appear");
+});
+
+let emojiArray = [...document.querySelectorAll(".emoji")];
+
+emojiArray.forEach((el) => {
+    el.addEventListener("click", (e) => {
+        textarea.value = textarea.value + e.target.innerText;
+    });
+});

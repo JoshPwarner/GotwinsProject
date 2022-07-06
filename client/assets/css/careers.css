@@ -127,6 +127,10 @@ main {
     transform: translateY(0.5rem);
 }
 
+.new-post-form {
+    position: relative;
+}
+
 .new-post-form,
 .new-comment-form {
     width: calc(100% - 4rem);
@@ -145,6 +149,54 @@ main {
     outline: none;
     padding: 1rem;
     border-radius: 1.2rem;
+}
+
+#remainig-letters {
+    display: none;
+    position: absolute;
+    right: 0.5rem;
+    color: var(--text-grey);
+    font-size: 1.3rem;
+}
+
+.bubble-outer {
+    position: absolute;
+    bottom: 4rem;
+    left: 5rem;
+    z-index: 14;
+    transform: scale(0);
+    transition: all 0.3s ease;
+}
+
+.appear {
+    transform: scale(1);
+}
+
+.bubble {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    width: 11rem;
+    height: 5rem;
+    border-radius: 1.2rem;
+    background-color: var(--bg-dark);
+}
+
+.bubble .pointer {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    background-color: var(--bg-dark);
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    bottom: -0.7rem;
+}
+
+.emoji {
+    font-size: 1.4rem;
+    cursor: pointer;
 }
 
 .buttons {
@@ -172,6 +224,7 @@ main {
 
 .add-emoji {
     font-size: 2rem;
+    color: var(--bg-dark);
 }
 
 .add-gif {
@@ -259,6 +312,33 @@ main {
 .gif-outer-box {
     border-radius: 1rem;
     overflow: hidden;
+    display: none;
+}
+
+.gif-outer-box.active-box {
+    display: block;
+}
+
+.gif-outer-box {
+    position: relative;
+}
+
+.gif-outer-box .close-gif {
+    width: 1.7rem;
+    height: 1.7rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+    z-index: 7;
+    color: var(--text-white);
+    background-color: var(--bg-dark);
 }
 
 #gif-container .gif .gif-img,
