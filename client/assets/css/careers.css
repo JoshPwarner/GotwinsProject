@@ -127,11 +127,17 @@ main {
     transform: translateY(0.5rem);
 }
 
-.new-post-form {
+.new-post-form,
+.new-comment-form {
     width: calc(100% - 4rem);
 }
 
-.new-post-form > textarea {
+.new-post-form #category {
+    display: none;
+}
+
+.new-post-form > textarea,
+.new-comment-form > textarea {
     resize: none;
     overflow-y: scroll;
     border: 1px solid rgba(0, 0, 0, 0.05);
