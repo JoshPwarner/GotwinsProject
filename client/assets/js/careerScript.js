@@ -68,7 +68,7 @@ function fetchPosts() {
                             <form class="new-post-form">
                                 <textarea
                                     name="new-post"
-                                    id="new-post-career"
+                                    id="new-post-career-${postIdBox}"
                                     cols="30"
                                     rows="2"
                                     placeholder="Add a comment..."
@@ -92,7 +92,13 @@ function fetchPosts() {
                 })
                 document.getElementById(`submit-btn-${postIdBox}`).addEventListener('click', (e) => {
                     e.preventDefault();
-                    fetch('url')
+                    if (document.getElementById(`new-post-career-${postIdBox}`).value !== '') {
+                           fetch(`localhost:5000/api/posts/${postIdBox}/comments`, {
+                            method: 'POST',
+                            
+                           })
+                    }
+                    
                 })
             })
         

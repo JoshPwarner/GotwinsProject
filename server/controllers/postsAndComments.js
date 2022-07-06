@@ -6,6 +6,7 @@ const jsonParser = bodyParser.json();
 const urlEncodedParser = bodyParser.urlencoded({extended: false});
 const { readFileSync, writeFileSync, readFile, writeFile } = require('fs');  
 const jsonfile = require('jsonfile')
+const allJsonData = require('../../data.json');
 
 async function writeJSONCareer(postData){
     let data = await jsonfile.readFile('../data.json', 'utf8');
@@ -90,6 +91,10 @@ router.post('/career', urlEncodedParser, (req, res) => {
     let postData  = req.body;
     writeJSONCareer(postData);
 
+})
+
+router.get('/career/:id', (req, res) => {
+    
 })
 
 router.get('/career/:id/comments')
