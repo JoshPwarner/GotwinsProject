@@ -94,10 +94,15 @@ router.post('/career', urlEncodedParser, (req, res) => {
 })
 
 router.get('/career/:id', (req, res) => {
-    
+
 })
 
+
 router.get('/career/:id/comments')
+
+router.post('/career/:id/comments', urlEncodedParser, (req, res) => {
+    
+})
 
 router.get('/family', (req, res) => {
     res.send(readJSONFamily());

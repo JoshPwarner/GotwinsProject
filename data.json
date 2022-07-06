@@ -4,7 +4,21 @@
             "posts": []
         },
         "family": {
-            "posts": []
+            "posts": [
+                {
+                    "time": "Wednesday, 6 July 2022, 10:28 am",
+                    "postID": 1,
+                    "category": "career",
+                    "story": "Sister had a baby",
+                    "comments": [],
+                    "reactions": {
+                        "fire": 0,
+                        "thumbs": 0,
+                        "smiley": 0
+                    },
+                    "gifs": ""
+                }
+            ]
         },
         "relationships": {
             "posts": [
@@ -20,11 +34,38 @@
                         "smiley": 0
                     },
                     "gifs": ""
+                },
+                {
+                    "time": "Wednesday, 6 July 2022, 10:34 am",
+                    "postID": 2,
+                    "category": "career",
+                    "story": "Got a gf",
+                    "comments": [],
+                    "reactions": {
+                        "fire": 0,
+                        "thumbs": 0,
+                        "smiley": 0
+                    },
+                    "gifs": ""
                 }
             ]
         },
         "general": {
-            "posts": []
+            "posts": [
+                {
+                    "time": "Wednesday, 6 July 2022, 10:37 am",
+                    "postID": 1,
+                    "category": "career",
+                    "story": "Won a holiday to Turkey.",
+                    "comments": [],
+                    "reactions": {
+                        "fire": 0,
+                        "thumbs": 0,
+                        "smiley": 0
+                    },
+                    "gifs": ""
+                }
+            ]
         }
     }
 }

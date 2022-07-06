@@ -16,21 +16,6 @@ function getTime() {
 }
 
 
-// let container = document.createElement('div');
-            // container.style.display = "flex";
-            // container.style.flexDirection = 'column';
-            // container.style.border = "1px solid black";
-            // let titleBox = document.createElement('div');
-            // titleBox.textContent = each.title;
-            // let storyBox = document.createElement('div');
-            // storyBox.textContent = each.story;
-            // container.appendChild(titleBox);
-            // container.appendChild(storyBox);
-            // let postBox = document.getElementById('posts');
-            // postBox.insertAdjacentElement('afterbegin', container);
-
-
-
 function fetchPosts() {
     fetch('http://localhost:5000/api/posts/career')
     .then(response => response.text())
@@ -95,7 +80,7 @@ function fetchPosts() {
                     if (document.getElementById(`new-post-career-${postIdBox}`).value !== '') {
                            fetch(`localhost:5000/api/posts/${postIdBox}/comments`, {
                             method: 'POST',
-                            
+
                            })
                     }
                     
@@ -105,64 +90,6 @@ function fetchPosts() {
              
         }
     
-    
-    // .then(items => {
-    //     items.forEach(each => {
-    //         let timeBox = each.time;
-    //         let postIdBox = each.postID;
-    //         let categoryBox = each.category;
-    //         let storyBox = each.story;
-    //         let commentsBox = each.comments;
-    //         let reactionsBox = each.reactions;
-    //         let gifsBox = each.gifs;
-
-    //         console.log(storyBox);
-    //     //     let overallPost = `<section class="post">
-    //     //     <div class="date">
-    //     //         <div class="avatar">
-    //     //             <i class="fa-solid fa-user"></i>
-    //     //         </div>
-    //     //         <p class="date-text">${timeBox}</p>
-    //     //     </div>
-    //     //     <div class="post-content">
-    //     //         <p>${storyBox}</p>
-    //     //     </div>
-    //     //     <hr class="divider" />
-    //     //     <div class="emoji">
-    //     //         <button class="button add-emoji"><i class="fa-regular fa-face-grin"></i></button>
-    //     //     </div>
-    //     //     <div class="add-comment">
-    //     //         <div class="form-box">
-    //     //             <div class="avatar">
-    //     //                 <i class="fa-solid fa-user"></i>
-    //     //             </div>
-    //     //             <form class="new-post-form">
-    //     //                 <textarea
-    //     //                     name="new-post"
-    //     //                     id="new-post-career"
-    //     //                     cols="30"
-    //     //                     rows="2"
-    //     //                     placeholder="Add a comment..."
-    //     //                     required
-    //     //                 ></textarea>
-    //     //                 <div class="buttons">
-    //     //                     <button class="button submit" type="submit">Post</button>
-    //     //                 </div>
-    //     //             </form>
-    //     //         </div>
-    //     //     </div>
-    //     //     <div class="comments">
-    //     //         <div class="comment-container">
-    //     //             <div class="avatar">
-    //     //                 <i class="fa-solid fa-user"></i>
-    //     //             </div>
-    //     //             <p class="comment-text">Congratulations!</p>
-    //     //         </div>
-    //     //     </div>
-    //     // </section>`
-    //     // document.getElementById('posts-container-career').insertAdjacentElement('afterbegin', overallPost);
-    //     })
-    // })
 
 
 
