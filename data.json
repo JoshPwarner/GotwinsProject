@@ -3,61 +3,81 @@
         "career": {
             "posts": [
                 {
+                    "time": "Tuesday, 5 July 2022, 8:53 pm",
                     "postID": 1,
                     "category": "career",
-                    "story": "Got a job",
+                    "story": "dfvasdfvcsadcsad",
                     "comments": [],
                     "reactions": {
                         "fire": 0,
                         "thumbs": 0,
                         "smiley": 0
-                    }, 
+                    },
+                    "gifs": ""
+                },
+                {
+                    "time": "Tuesday, 5 July 2022, 8:59 pm",
+                    "postID": 2,
+                    "category": "career",
+                    "story": "nikola tesla",
+                    "comments": [],
+                    "reactions": {
+                        "fire": 0,
+                        "thumbs": 0,
+                        "smiley": 0
+                    },
+                    "gifs": ""
+                },
+                {
+                    "time": "Tuesday, 5 July 2022, 9:45 pm",
+                    "postID": 3,
+                    "category": "career",
+                    "story": "Albert Einstein",
+                    "comments": [],
+                    "reactions": {
+                        "fire": 0,
+                        "thumbs": 0,
+                        "smiley": 0
+                    },
+                    "gifs": ""
+                },
+                {
+                    "time": "Tuesday, 5 July 2022, 10:38 pm",
+                    "postID": 4,
+                    "category": "career",
+                    "story": "hello goodbye",
+                    "comments": [],
+                    "reactions": {
+                        "fire": 0,
+                        "thumbs": 0,
+                        "smiley": 0
+                    },
                     "gifs": ""
                 }
             ]
         },
         "family": {
-            "posts": [{
-                "postID": 1,
-                "category": "family",
-                "story": "Had a kid",
-                "comments": [],
-                "reactions": {
-                    "fire": 0,
-                    "thumbs": 0,
-                    "smiley": 0
-                }, 
-                "gifs": ""
-            }]
-        }, 
+            "posts": []
+        },
         "relationships": {
-            "posts": [{
-                "userID": 1,
-                "category": "relationships",
-                "story": "Got a new gf",
-                "comments": [],
-                "reactions": {
-                    "fire": 0,
-                    "thumbs": 0,
-                    "smiley": 0
-                }, 
-                "gifs": ""
-            }]
+            "posts": [
+                {
+                    "time": "Tuesday, 5 July 2022, 5:26 pm",
+                    "postID": 1,
+                    "category": "relationships",
+                    "story": "alan turing",
+                    "comments": [],
+                    "reactions": {
+                        "fire": 0,
+                        "thumbs": 0,
+                        "smiley": 0
+                    },
+                    "gifs": ""
+                }
+            ]
         },
         "general": {
-            "posts": [{
-                "userID": 1,
-                "category": "general",
-                "story": "Won a holiday",
-                "comments": [],
-                "reactions": {
-                    "fire": 0,
-                    "thumbs": 0,
-                    "smiley": 0
-                }, 
-                "gifs": ""
-            }]
+            "posts": []
         }
-        
     }
 }
