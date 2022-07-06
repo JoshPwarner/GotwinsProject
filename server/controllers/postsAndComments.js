@@ -34,6 +34,15 @@ async function writeJSONFamily(postData){
 
 }
 
+async function writeJSONFamilyComments(postData, reqId){
+    let data = await jsonfile.readFile('../data.json', 'utf8');
+    reqId = parseInt(reqId) - 1;
+    data.allPosts.family.posts[reqId].comments.push(postData);
+    await jsonfile.writeFile('../data.json', data);
+
+}
+
+
 
 async function writeJSONRelationships(postData){
     let data = await jsonfile.readFile('../data.json', 'utf8');
@@ -43,11 +52,27 @@ async function writeJSONRelationships(postData){
 
 }
 
+async function writeJSONRelationshipsComments(postData, reqId){
+    let data = await jsonfile.readFile('../data.json', 'utf8');
+    reqId = parseInt(reqId) - 1;
+    data.allPosts.relationships.posts[reqId].comments.push(postData);
+    await jsonfile.writeFile('../data.json', data);
+
+}
+
 async function writeJSONGeneral(postData){
     let data = await jsonfile.readFile('../data.json', 'utf8');
     
         data.allPosts.general.posts.push(postData)
         await jsonfile.writeFile('../data.json', data);
+
+}
+
+async function writeJSONGeneralComments(postData, reqId){
+    let data = await jsonfile.readFile('../data.json', 'utf8');
+    reqId = parseInt(reqId) - 1;
+    data.allPosts.general.posts[reqId].comments.push(postData);
+    await jsonfile.writeFile('../data.json', data);
 
 }
 
@@ -60,10 +85,45 @@ function readJSONCareer() {
 
 }
 
+function readJSONCareerId(idNumber) {
+    idNumber = idNumber - 1;
+    let wholeFile = readFileSync('../data.json', 'utf8');
+    wholeFile = JSON.parse(wholeFile);
+    return wholeFile.allPosts.career.posts[idNumber];
+
+
+}
+
+function readJSONCareerComments(idNumber) {
+    idNumber = idNumber - 1;
+    let wholeFile = readFileSync('../data.json', 'utf8');
+    wholeFile = JSON.parse(wholeFile);
+    return wholeFile.allPosts.career.posts[idNumber].comments;
+
+}
+
+
 function readJSONFamily() {
     let wholeFile = readFileSync('../data.json', 'utf8');
     wholeFile = JSON.parse(wholeFile);
     return wholeFile.allPosts.family;
+
+}
+
+function readJSONFamilyId(idNumber) {
+    idNumber = idNumber - 1;
+    let wholeFile = readFileSync('../data.json', 'utf8');
+    wholeFile = JSON.parse(wholeFile);
+    return wholeFile.allPosts.family.posts[idNumber];
+
+
+}
+
+function readJSONFamilyComments(idNumber) {
+    idNumber = idNumber - 1;
+    let wholeFile = readFileSync('../data.json', 'utf8');
+    wholeFile = JSON.parse(wholeFile);
+    return wholeFile.allPosts.family.posts[idNumber].comments;
 
 }
 
@@ -74,11 +134,45 @@ function readJSONRelationships() {
 
 }
 
+function readJSONRelationshipsId(idNumber) {
+    idNumber = idNumber - 1;
+    let wholeFile = readFileSync('../data.json', 'utf8');
+    wholeFile = JSON.parse(wholeFile);
+    return wholeFile.allPosts.relationships.posts[idNumber];
+
+
+}
+
+function readJSONRelationshipsComments(idNumber) {
+    idNumber = idNumber - 1;
+    let wholeFile = readFileSync('../data.json', 'utf8');
+    wholeFile = JSON.parse(wholeFile);
+    return wholeFile.allPosts.relationships.posts[idNumber].comments;
+
+}
+
 
 function readJSONGeneral() {
     let wholeFile = readFileSync('../data.json', 'utf8');
     wholeFile = JSON.parse(wholeFile);
     return wholeFile.allPosts.general;
+
+}
+
+function readJSONGeneralId(idNumber) {
+    idNumber = idNumber - 1;
+    let wholeFile = readFileSync('../data.json', 'utf8');
+    wholeFile = JSON.parse(wholeFile);
+    return wholeFile.allPosts.general.posts[idNumber];
+
+
+}
+
+function readJSONGeneralComments(idNumber) {
+    idNumber = idNumber - 1;
+    let wholeFile = readFileSync('../data.json', 'utf8');
+    wholeFile = JSON.parse(wholeFile);
+    return wholeFile.allPosts.general.posts[idNumber].comments;
 
 }
 
@@ -105,7 +199,7 @@ router.post('/career', urlEncodedParser, (req, res) => {
 router.get('/career/:id', (req, res) => {
     try {
         const idNumber = parseInt(req.params.id);
-        res.send(allJsonData.allPosts.career.posts[idNumber - 1]);
+        res.send(readJSONCareerId(idNumber));
     } catch {
         res.send(err);
 
@@ -114,10 +208,12 @@ router.get('/career/:id', (req, res) => {
 
 })
 
+
+
 router.get('/career/:id/comments', (req, res) => {
     try {
         const idNumber = parseInt(req.params.id);
-        res.send(allJsonData.allPosts.career.posts[idNumber - 1].comments);
+        res.send(readJSONCareerComments(idNumber));
     }
     catch {
         res.send(err);
@@ -144,11 +240,50 @@ router.get('/family', (req, res) => {
 
 })
 
+router.get('/family/:id', (req, res) => {
+    try {
+        const idNumber = parseInt(req.params.id);
+        res.send(readJSONFamilyId(idNumber));
+    } catch {
+        res.send(err);
+
+    }
+    
+
+})
+
+
+
+router.get('/family/:id/comments', (req, res) => {
+    try {
+        const idNumber = parseInt(req.params.id);
+        res.send(readJSONFamilyComments(idNumber));
+    }
+    catch {
+        res.send(err);
+
+    }
+})
+
 router.post('/family', urlEncodedParser, (req, res) => {
     const { time, postID, category, story, comments, reactions, gifs } = req.body;
     let postData  = req.body;
     writeJSONFamily(postData);
 })
+
+router.post('/family/:id/comments', urlEncodedParser, (req, res) => {
+    try {
+        const { comment, postID } = req.body;
+        console.log(comment);
+        writeJSONFamilyComments(comment, postID);
+    }
+    catch {
+        console.log(err);
+    }
+
+    
+})
+
 
 router.get('/relationships', (req, res) => {
     res.send(readJSONRelationships());
@@ -160,6 +295,44 @@ router.post('/relationships', urlEncodedParser, (req, res) => {
     writeJSONRelationships(postData);
 })
 
+router.get('/relationships/:id', (req, res) => {
+    try {
+        const idNumber = parseInt(req.params.id);
+        res.send(readJSONRelationshipsId(idNumber));
+    } catch {
+        res.send(err);
+
+    }
+    
+
+})
+
+
+
+router.get('/relationships/:id/comments', (req, res) => {
+    try {
+        const idNumber = parseInt(req.params.id);
+        res.send(readJSONRelationshipsComments(idNumber));
+    }
+    catch {
+        res.send(err);
+
+    }
+})
+
+router.post('/relationships/:id/comments', urlEncodedParser, (req, res) => {
+    try {
+        const { comment, postID } = req.body;
+        console.log(comment);
+        writeJSONRelationshipsComments(comment, postID);
+    }
+    catch {
+        console.log(err);
+    }
+
+    
+})
+
 router.get('/general', (req, res) => {
     res.send(readJSONGeneral());
 })
@@ -169,6 +342,44 @@ router.post('/general', (req, res) => {
     let postData  = req.body;
     writeJSONGeneral(postData);
 
+})
+
+router.get('/general/:id', (req, res) => {
+    try {
+        const idNumber = parseInt(req.params.id);
+        res.send(readJSONGeneralId(idNumber));
+    } catch {
+        res.send(err);
+
+    }
+    
+
+})
+
+
+
+router.get('/general/:id/comments', (req, res) => {
+    try {
+        const idNumber = parseInt(req.params.id);
+        res.send(readJSONGeneralComments(idNumber));
+    }
+    catch {
+        res.send(err);
+
+    }
+})
+
+router.post('/general/:id/comments', urlEncodedParser, (req, res) => {
+    try {
+        const { comment, postID } = req.body;
+        console.log(comment);
+        writeJSONGeneralComments(comment, postID);
+    }
+    catch {
+        console.log(err);
+    }
+
+    
 })
 
 

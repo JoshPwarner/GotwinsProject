@@ -1,4 +1,4 @@
-const submitBtnCareer = document.getElementById('submit-button-relationships');
+const submitBtnRelationships = document.getElementById('submit-button-relationships');
 
 function getTime() {
     const now = new Date();
@@ -60,7 +60,7 @@ function fetchPosts() {
                                     required
                                 ></textarea>
                                 <div class="buttons">
-                                    <button id="submit-btn-${postIdBox} "class="button submit" type="submit">Post</button>
+                                    <button id="submit-btn-${postIdBox}" class="button submit" type="submit">Post</button>
                                 </div>
                             </form>
                         </div>
@@ -74,17 +74,32 @@ function fetchPosts() {
                 newDiv.innerHTML = overallPost;
                 newDiv.style.margin = '2rem 0 2rem 0';
                 document.getElementById('posts-container-relationships').insertAdjacentElement('afterbegin', newDiv);
-                })
                 document.getElementById(`submit-btn-${postIdBox}`).addEventListener('click', (e) => {
                     e.preventDefault();
                     if (document.getElementById(`new-post-relationships-${postIdBox}`).value !== '') {
-                           fetch(`localhost:5000/api/posts/${postIdBox}/comments`, {
+                           console.log(document.getElementById(`new-post-relationships-${postIdBox}`).value);
+                           let url = 'http://localhost:5000/api/posts/relationships/';
+                           url += postIdBox;
+                           url += '/comments'
+                           let commentValue = document.getElementById(`new-post-relationships-${postIdBox}`).value;
+                           fetch(url, {
                             method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                comment: commentValue, 
+                                postID: postIdBox,
+                            })
 
                            })
+                    } else {
+                        alert('Please input something to post');
                     }
                     
                 })
+                })
+                
             })
         
              
@@ -95,7 +110,7 @@ function fetchPosts() {
 
 fetchPosts();
 
-submitBtnCareer.addEventListener('click', async (e) => {
+submitBtnRelationships.addEventListener('click', async (e) => {
     e.preventDefault();  
     const storyData = document.getElementById('new-post-relationships').value;
     console.log(storyData);
