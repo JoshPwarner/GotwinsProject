@@ -75,7 +75,7 @@ function fetchPosts() {
                                     required
                                 ></textarea>
                                 <div class="buttons">
-                                    <button class="button submit" type="submit">Post</button>
+                                    <button id="submit-btn-${postIdBox} "class="button submit" type="submit">Post</button>
                                 </div>
                             </form>
                         </div>
@@ -89,6 +89,10 @@ function fetchPosts() {
                 newDiv.innerHTML = overallPost;
                 newDiv.style.margin = '2rem 0 2rem 0';
                 document.getElementById('posts-container-career').insertAdjacentElement('afterbegin', newDiv);
+                })
+                document.getElementById(`submit-btn-${postIdBox}`).addEventListener('click', (e) => {
+                    e.preventDefault();
+                    fetch('url')
                 })
             })
         
