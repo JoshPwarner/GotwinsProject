@@ -4,7 +4,7 @@ function getTime() {
     const now = new Date();
     const options1 = {
         hour: 'numeric',
-        hour12: true,
+        hour12: false,
         minute: 'numeric',
         weekday: 'long',
         day: 'numeric',
@@ -14,21 +14,6 @@ function getTime() {
 
     return new Intl.DateTimeFormat('en-GB', options1).format(now);
 }
-
-
-// let container = document.createElement('div');
-            // container.style.display = "flex";
-            // container.style.flexDirection = 'column';
-            // container.style.border = "1px solid black";
-            // let titleBox = document.createElement('div');
-            // titleBox.textContent = each.title;
-            // let storyBox = document.createElement('div');
-            // storyBox.textContent = each.story;
-            // container.appendChild(titleBox);
-            // container.appendChild(storyBox);
-            // let postBox = document.getElementById('posts');
-            // postBox.insertAdjacentElement('afterbegin', container);
-
 
 
 function fetchPosts() {
@@ -44,119 +29,171 @@ function fetchPosts() {
                     let commentsBox = item.comments;
                     let reactionsBox = item.reactions;
                     let gifsBox = item.gifs;
-                    console.log(storyBox);
-                    let newDiv = document.createElement('div');
-                    let overallPost = `<section class="post">
-                    <div class="date">
-                        <div class="avatar">
-                            <i class="fa-solid fa-user"></i>
-                        </div>
-                        <p class="date-text">${timeBox}</p>
-                    </div>
-                    <div class="post-content">
-                        <p>${storyBox}</p>
-                    </div>
-                    <hr class="divider" />
-                    <div class="emoji">
-                        <button class="button add-emoji"><i class="fa-regular fa-face-grin"></i></button>
-                    </div>
-                    <div class="add-comment">
-                        <div class="form-box">
-                            <div class="avatar">
-                                <i class="fa-solid fa-user"></i>
-                            </div>
-                            <form class="new-post-form">
-                                <textarea
-                                    name="new-post"
-                                    id="new-post-career"
-                                    cols="30"
-                                    rows="2"
-                                    placeholder="Add a comment..."
-                                    required
-                                ></textarea>
-                                <div class="buttons">
-                                    <button id="submit-btn-${postIdBox} "class="button submit" type="submit">Post</button>
+                    if (commentsBox.length === 0) {
+                        let newDiv = document.createElement('div');
+                            let overallPost = `<section class="post">
+                            <div class="date">
+                                <div class="avatar">
+                                    <i class="fa-solid fa-user"></i>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="comments">
-                        <div class="comment-container">
+                                <p class="date-text">${timeBox}</p>
+                            </div>
+                            <div class="post-content">
+                                <p>${storyBox}</p>
+                            </div>
+                            <hr class="divider" />
+                            <div class="emoji">
+                                <button class="button add-emoji"><i class="fa-regular fa-face-grin"></i></button>
+                            </div>
+                            <div class="add-comment">
+                                <div class="form-box">
+                                    <div class="avatar">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+                                    <form class="new-post-form">
+                                        <textarea
+                                            name="new-post"
+                                            id="new-post-career-${postIdBox}"
+                                            cols="30"
+                                            rows="2"
+                                            placeholder="Add a comment..."
+                                            required
+                                        ></textarea>
+                                        <div class="buttons">
+                                            <button id="submit-btn-${postIdBox}" class="button submit" type="submit">Post</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="comments">
+                                <div id="comment-container-career-${postIdBox}" class="comment-container">
+                                    
+                                </div>
+                            </div>
+                        </section>`
+                        newDiv.innerHTML = overallPost;
+                        newDiv.style.margin = '2rem 0 2rem 0';
+                        document.getElementById('posts-container-career').insertAdjacentElement('afterbegin', newDiv);
+                        
+                        document.getElementById(`submit-btn-${postIdBox}`).addEventListener('click', (e) => {
+                            e.preventDefault();
+                            if (document.getElementById(`new-post-career-${postIdBox}`).value !== '') {
+                                console.log(document.getElementById(`new-post-career-${postIdBox}`).value);
+                                let url = 'http://localhost:5000/api/posts/career/';
+                                url += postIdBox;
+                                url += '/comments'
+                                let commentValue = document.getElementById(`new-post-career-${postIdBox}`).value;
+                                fetch(url, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        comment: commentValue, 
+                                        postID: postIdBox,
+                                    })
+
+                                })
+                            } else {
+                                alert('Please input something to post');
+                            }
                             
-                        </div>
-                    </div>
-                </section>`
-                newDiv.innerHTML = overallPost;
-                newDiv.style.margin = '2rem 0 2rem 0';
-                document.getElementById('posts-container-career').insertAdjacentElement('afterbegin', newDiv);
-                })
-                document.getElementById(`submit-btn-${postIdBox}`).addEventListener('click', (e) => {
-                    e.preventDefault();
-                    fetch('url')
-                })
+                        })
+                    } else {
+                        let newDiv = document.createElement('div');
+                            let overallPost = `<section class="post">
+                            <div class="date">
+                                <div class="avatar">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <p class="date-text">${timeBox}</p>
+                            </div>
+                            <div class="post-content">
+                                <p>${storyBox}</p>
+                            </div>
+                            <hr class="divider" />
+                            <div class="emoji">
+                                <button class="button add-emoji"><i class="fa-regular fa-face-grin"></i></button>
+                            </div>
+                            <div class="add-comment">
+                                <div class="form-box">
+                                    <div class="avatar">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+                                    <form class="new-post-form">
+                                        <textarea
+                                            name="new-post"
+                                            id="new-post-career-${postIdBox}"
+                                            cols="30"
+                                            rows="2"
+                                            placeholder="Add a comment..."
+                                            required
+                                        ></textarea>
+                                        <div class="buttons">
+                                            <button id="submit-btn-${postIdBox}" class="button submit" type="submit">Post</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="comments">
+                                <div id="comment-container-career-${postIdBox}" class="comment-container">
+                                    
+                                </div>
+                            </div>
+                        </section>`
+                        newDiv.innerHTML = overallPost;
+                        newDiv.style.margin = '2rem 0 2rem 0';
+                        document.getElementById('posts-container-career').insertAdjacentElement('afterbegin', newDiv);
+                        commentsBox.forEach(each => {
+                            let newCommentDiv = document.createElement('div');
+                            newCommentDiv.innerHTML = `<div class="avatar">
+                                                    <i class="fa-solid fa-user"></i>
+                                                </div>
+                                                <p class="comment-text">${each}</p>`
+                            newCommentDiv.style.display = 'flex';
+                            newCommentDiv.style.alignItems = 'center';
+                            document.getElementById(`comment-container-career-${postIdBox}`).style.display = 'flex';
+                            document.getElementById(`comment-container-career-${postIdBox}`).insertAdjacentElement('beforeend', newCommentDiv)
+                            // document.querySelectorAll('.comment-text').style.margin = "0 0 0 1rem";
+                            
+                        })
+                        document.getElementById(`comment-container-career-${postIdBox}`).style.display = 'flex';
+                        document.getElementById(`comment-container-career-${postIdBox}`).style.flexDirection = 'column';
+                        document.getElementById(`comment-container-career-${postIdBox}`).style.alignItems = 'flex-start';
+
+                        document.getElementById(`submit-btn-${postIdBox}`).addEventListener('click', (e) => {
+                            e.preventDefault();
+                            if (document.getElementById(`new-post-career-${postIdBox}`).value !== '') {
+                                console.log(document.getElementById(`new-post-career-${postIdBox}`).value);
+                                let url = 'http://localhost:5000/api/posts/career/';
+                                url += postIdBox;
+                                url += '/comments'
+                                let commentValue = document.getElementById(`new-post-career-${postIdBox}`).value;
+                                fetch(url, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        comment: commentValue, 
+                                        postID: postIdBox,
+                                    })
+
+                                })
+                            } else {
+                                alert('Please input something to post');
+                            }
+                            
+                        })
+                            }
+                            
+                        })
+                
             })
         
              
-        }
+}
     
-    
-    // .then(items => {
-    //     items.forEach(each => {
-    //         let timeBox = each.time;
-    //         let postIdBox = each.postID;
-    //         let categoryBox = each.category;
-    //         let storyBox = each.story;
-    //         let commentsBox = each.comments;
-    //         let reactionsBox = each.reactions;
-    //         let gifsBox = each.gifs;
-
-    //         console.log(storyBox);
-    //     //     let overallPost = `<section class="post">
-    //     //     <div class="date">
-    //     //         <div class="avatar">
-    //     //             <i class="fa-solid fa-user"></i>
-    //     //         </div>
-    //     //         <p class="date-text">${timeBox}</p>
-    //     //     </div>
-    //     //     <div class="post-content">
-    //     //         <p>${storyBox}</p>
-    //     //     </div>
-    //     //     <hr class="divider" />
-    //     //     <div class="emoji">
-    //     //         <button class="button add-emoji"><i class="fa-regular fa-face-grin"></i></button>
-    //     //     </div>
-    //     //     <div class="add-comment">
-    //     //         <div class="form-box">
-    //     //             <div class="avatar">
-    //     //                 <i class="fa-solid fa-user"></i>
-    //     //             </div>
-    //     //             <form class="new-post-form">
-    //     //                 <textarea
-    //     //                     name="new-post"
-    //     //                     id="new-post-career"
-    //     //                     cols="30"
-    //     //                     rows="2"
-    //     //                     placeholder="Add a comment..."
-    //     //                     required
-    //     //                 ></textarea>
-    //     //                 <div class="buttons">
-    //     //                     <button class="button submit" type="submit">Post</button>
-    //     //                 </div>
-    //     //             </form>
-    //     //         </div>
-    //     //     </div>
-    //     //     <div class="comments">
-    //     //         <div class="comment-container">
-    //     //             <div class="avatar">
-    //     //                 <i class="fa-solid fa-user"></i>
-    //     //             </div>
-    //     //             <p class="comment-text">Congratulations!</p>
-    //     //         </div>
-    //     //     </div>
-    //     // </section>`
-    //     // document.getElementById('posts-container-career').insertAdjacentElement('afterbegin', overallPost);
-    //     })
-    // })
 
 
 

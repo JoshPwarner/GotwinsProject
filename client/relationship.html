@@ -30,7 +30,7 @@
     </head>
     <body>
         <header class="fixed-top">
-            <a class="navbar-brand" href="#">GotWins!</a>
+            <a class="navbar-brand" href="../index.html">GotWins!</a>
             <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
                     <ul class="navbar-nav flex-row gap-3 align-content-end mb-lg-0">
@@ -50,10 +50,10 @@
                                 Wins
                             </a>
                             <ul class="dropdown-menu postion-absolute" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="general.html">General Wins</a></li>
-                                <li><a class="dropdown-item active" href="careers.html">Career Wins</a></li>
-                                <li><a class="dropdown-item" href="relationship.html">Relationship Wins</a></li>
-                                <li><a class="dropdown-item" href="family.html">Family Wins</a></li>
+                                <li><a class="dropdown-item" href="./general.html">General Wins</a></li>
+                                <li><a class="dropdown-item" href="./careers.html">Career Wins</a></li>
+                                <li><a class="dropdown-item active" href="#">Relationship Wins</a></li>
+                                <li><a class="dropdown-item" href="./family.html">Family Wins</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -72,11 +72,11 @@
                         </div>
                         <form class="new-post-form">
                             <select name="category" id="category">
-                                <option value="relationship">relationship</option>
+                                <option value="relationships">relationship</option>
                             </select>
                             <textarea
                                 name="new-post"
-                                id="new-post-relationship"
+                                id="new-post-relationships"
                                 cols="30"
                                 rows="5"
                                 placeholder="Write your post here..."
@@ -96,7 +96,7 @@
                                 <button id="remove-gif" class="close-gif" type="button">&#10799;</button>
                             </div>
                             <div class="buttons">
-                                <button id="submit-button-relationship" class="button submit" type="submit">
+                                <button id="submit-button-relationships" class="button submit" type="submit">
                                     Submit
                                 </button>
                                 <button class="button add-emoji"><i class="fa-regular fa-face-grin"></i></button>
@@ -114,7 +114,7 @@
                 </section>
             </article>
 
-            <article id="posts-container-relationship" class="container posts-box">
+            <article id="posts-container-relationships" class="container posts-box">
                 <section class="post">
                     <div class="date">
                         <div class="avatar">
@@ -137,14 +137,14 @@
                             <form class="new-comment-form">
                                 <textarea
                                     name="new-comment"
-                                    id="new-comment-relationship"
+                                    id="new-comment-relationships"
                                     cols="30"
                                     rows="2"
                                     placeholder="Add a comment..."
                                     required
                                 ></textarea>
                                 <div class="buttons">
-                                    <button id="submit-relationship" class="button submit" type="submit">Post</button>
+                                    <button id="submit-relationships" class="button submit" type="submit">Post</button>
                                 </div>
                             </form>
                         </div>
