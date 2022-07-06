@@ -26,6 +26,7 @@
             crossorigin="anonymous"
         ></script>
         <script defer src="./assets/js/generalScript.js"></script>
+        <script defer src="./assets/js/generalGifScript.js"></script>
         <title>GotWins!</title>
     </head>
     <body>
@@ -82,11 +83,25 @@
                                 cols="30"
                                 rows="5"
                                 placeholder="Write your post here..."
+                                maxlength="500"
                                 required
                             ></textarea>
+                            <div id="gif-outer-box">
+                                <img id="gif-img" class="gif-img img-fluid" src="" alt="" />
+                            </div>
                             <div class="buttons">
                                 <button id="submit-button-general" class="button submit" type="submit">Submit</button>
-                                <button class="button add-emoji"><i class="fa-regular fa-face-grin"></i></button>
+                                <button type="button" class="button add-emoji">
+                                    <i class="fa-regular fa-face-grin"></i>
+                                </button>
+                                <button
+                                    type="button"
+                                    class="button add-gif"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#gifModal"
+                                >
+                                    <img src="./assets/images/gif.svg" alt="" />
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -121,7 +136,8 @@
                                     rows="2"
                                     placeholder="Add a comment..."
                                     required
-                                ></textarea>
+                                >
+                                </textarea>
                                 <div class="buttons">
                                     <button id="submit-general" class="button submit" type="submit">Post</button>
                                 </div>
@@ -138,6 +154,22 @@
                     </div>
                 </section>
             </article>
+
+            <!-- Modal -->
+            <div class="modal fade" id="gifModal" tabindex="-1" aria-labelledby="gifModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="gifModalLabel">Choose your GIF</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="gif-container" class="modal-body"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
         <footer>
             <p class="footer-text">Created by James Thompson, Joshua Warner and Stefan Yordanov</p>
