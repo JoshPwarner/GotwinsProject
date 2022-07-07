@@ -15,9 +15,13 @@ function getTime() {
     return new Intl.DateTimeFormat('en-GB', options1).format(now);
 }
 
+function refreshThePage() {
+    window.location.reload();
+}
+
 
 function fetchPosts() {
-    fetch('http://localhost:5000/api/posts/general')
+    fetch('https://gotwins.herokuapp.com/api/posts/general')
     .then(response => response.text())
     .then(data => JSON.parse(data))
     .then(result => {
@@ -81,7 +85,7 @@ function fetchPosts() {
                             e.preventDefault();
                             if (document.getElementById(`new-post-general-${postIdBox}`).value !== '') {
                                 console.log(document.getElementById(`new-post-general-${postIdBox}`).value);
-                                let url = 'http://localhost:5000/api/posts/general/';
+                                let url = 'https://gotwins.herokuapp.com/api/posts/general/';
                                 url += postIdBox;
                                 url += '/comments'
                                 let commentValue = document.getElementById(`new-post-general-${postIdBox}`).value;
@@ -95,7 +99,9 @@ function fetchPosts() {
                                         postID: postIdBox,
                                     })
 
-                                })
+                                }).then(
+                                    refreshThePage()
+                                )
                             } else {
                                 alert('Please input something to post');
                             }
@@ -152,7 +158,7 @@ function fetchPosts() {
                             e.preventDefault();
                             if (document.getElementById(`new-post-general-${postIdBox}`).value !== '') {
                                 console.log(document.getElementById(`new-post-general-${postIdBox}`).value);
-                                let url = 'http://localhost:5000/api/posts/general/';
+                                let url = 'https://gotwins.herokuapp.com/api/posts/general/';
                                 url += postIdBox;
                                 url += '/comments'
                                 let commentValue = document.getElementById(`new-post-general-${postIdBox}`).value;
@@ -166,7 +172,9 @@ function fetchPosts() {
                                         postID: postIdBox,
                                     })
 
-                                })
+                                }).then(
+                                    refreshThePage()         
+                                )
                             } else {
                                 alert('Please input something to post');
                             }
@@ -242,7 +250,7 @@ function fetchPosts() {
                             e.preventDefault();
                             if (document.getElementById(`new-post-general-${postIdBox}`).value !== '') {
                                 console.log(document.getElementById(`new-post-general-${postIdBox}`).value);
-                                let url = 'http://localhost:5000/api/posts/general/';
+                                let url = 'https://gotwins.herokuapp.com/api/posts/general/';
                                 url += postIdBox;
                                 url += '/comments'
                                 let commentValue = document.getElementById(`new-post-general-${postIdBox}`).value;
@@ -256,7 +264,9 @@ function fetchPosts() {
                                         postID: postIdBox,
                                     })
 
-                                })
+                                }).then(
+                                    refreshThePage()
+                                )
                             } else {
                                 alert('Please input something to post');
                             }
@@ -329,7 +339,7 @@ function fetchPosts() {
                             e.preventDefault();
                             if (document.getElementById(`new-post-general-${postIdBox}`).value !== '') {
                                 console.log(document.getElementById(`new-post-general-${postIdBox}`).value);
-                                let url = 'http://localhost:5000/api/posts/general/';
+                                let url = 'https://gotwins.herokuapp.com/api/posts/general/';
                                 url += postIdBox;
                                 url += '/comments'
                                 let commentValue = document.getElementById(`new-post-general-${postIdBox}`).value;
@@ -343,7 +353,12 @@ function fetchPosts() {
                                         postID: postIdBox,
                                     })
 
-                                })
+                                }).then(
+                                    refreshThePage()
+                                )
+
+                                
+                                
                             } else {
                                 alert('Please input something to post');
                             }
@@ -366,41 +381,51 @@ function fetchPosts() {
 
 fetchPosts();
 
-submitBtnGeneral.addEventListener('click', async (e) => {
+
+submitBtnGeneral.addEventListener('click', (e) => {
     e.preventDefault();  
     const storyData = document.getElementById('new-post-general').value;
     console.log(storyData);
     let gifUrl = document.getElementById('gif-img').src;
     let postIDnumber = 0;
-    await fetch('http://localhost:5000/api/posts/general')
+    fetch('https://gotwins.herokuapp.com/api/posts/general')
     .then(response => response.text())
     .then(data => JSON.parse(data))
     .then(array => array.posts)
     .then(array => {
-        postIDnumber = array.length + 1;
-    })
-
-    let newObject = {
-        time: getTime(),
-        postID: postIDnumber, 
-        category: 'general', 
-        story: storyData, 
-        comments: [], 
-        reactions: {fire: 0,
-                    thumbs: 0,
-                     smiley: 0},
-        gifs: gifUrl,
-    }
-
-    console.log(newObject);
-    await fetch('http://localhost:5000/api/posts/general', {
+        return array.length + 1;
+    }).then(
+        number => {
+            let newObject = {
+                time: getTime(),
+                postID: number, 
+                category: 'general', 
+                story: storyData, 
+                comments: [], 
+                reactions: {fire: 0,
+                            thumbs: 0,
+                             smiley: 0},
+                gifs: gifUrl,
+            }
+            return newObject;
+        }
+    ).then(
+        newObject => {
+            fetch('https://gotwins.herokuapp.com/api/posts/general', {
         method: 'POST',
         body: JSON.stringify(newObject), 
         headers: {
             'Content-Type': 'application/json'
-        },
+        }
         
-    })
+        })
+     }).then(
+        () => {
+            refreshThePage();
+        }
+        
+     )
+    
 
 
 })
@@ -472,9 +497,9 @@ textarea.addEventListener("focus", () => {
     letterCount.textContent = maxLen - letters;
 });
 
-textarea.addEventListener("focusout", () => {
-    letterCount.style.display = "none";
-});
+// textarea.addEventListener("focusout", () => {
+//     letterCount.style.display = "none";
+// });
 
 const bubbleBox = document.querySelector("#bubble-box");
 
