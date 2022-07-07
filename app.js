@@ -23,10 +23,18 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use('/', express.static('./index.html'));
+app.use(express.static('./client'));
+
+app.use(express.static('./data.json'));
+
+app.use( express.static('./client/assets/css/style.css'));
+
+app.use( express.static('./client/assets/js/'));
+
+app.use( express.static('./client/assets/images'));
 
 app.get('/', (req, res) => {
-    res.send(path.resolve(__dirname, './index.html'));
+    res.sendFile(path.resolve(__dirname, './index.html'));
 })
 
 
