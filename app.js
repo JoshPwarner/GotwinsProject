@@ -1,12 +1,11 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const port = 5000;
 const postsAndComments = require('./postsAndComments');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const urlEncodedParser = bodyParser.urlencoded({extended: false});
-
+const port = process.env.PORT || 5000
 
 
 app.use('/api/posts', postsAndComments);
