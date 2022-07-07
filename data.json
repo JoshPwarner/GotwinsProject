@@ -1,88 +1,23 @@
 {
     "allPosts": {
         "career": {
-            "posts": []
+            "posts": [
+               
+            ]
         },
         "family": {
             "posts": [
-                {
-                    "time": "Thursday, 7 July 2022 at 13:21",
-                    "postID": 1,
-                    "category": "family",
-                    "story": "just had my first child👍👍",
-                    "comments": [
-                        "That is so cool",
-                        "Congrats\n"
-                    ],
-                    "reactions": {
-                        "fire": 0,
-                        "thumbs": 0,
-                        "smiley": 0
-                    },
-                    "gifs": "https://media4.giphy.com/media/y0CeejV18ZS3XVMJZh/giphy-downsized.gif?cid=e9e62f4fzgnruwwyspvstprcqp2lgngjqitxg3aw5g0d16hp&rid=giphy-downsized.gif&ct=g"
-                },
-                {
-                    "time": "Thursday, 7 July 2022 at 13:24",
-                    "postID": 2,
-                    "category": "family",
-                    "story": "",
-                    "comments": [],
-                    "reactions": {
-                        "fire": 0,
-                        "thumbs": 0,
-                        "smiley": 0
-                    },
-                    "gifs": "http://127.0.0.1:5500/client/family.html"
-                },
-                {
-                    "time": "Thursday, 7 July 2022 at 13:24",
-                    "postID": 3,
-                    "category": "family",
-                    "story": "",
-                    "comments": [],
-                    "reactions": {
-                        "fire": 0,
-                        "thumbs": 0,
-                        "smiley": 0
-                    },
-                    "gifs": "http://127.0.0.1:5500/client/family.html"
-                }
+                
             ]
         },
         "relationships": {
-            "posts": []
+            "posts": [
+                
+            ]
         },
         "general": {
             "posts": [
-                {
-                    "time": "Thursday, 7 July 2022 at 14:42",
-                    "postID": 1,
-                    "category": "general",
-                    "story": "Hello this is a test",
-                    "comments": [],
-                    "reactions": {
-                        "fire": 0,
-                        "thumbs": 0,
-                        "smiley": 0
-                    },
-                    "gifs": "http://127.0.0.1:5500/client/general.html"
-                },
-                {
-                    "time": "Thursday, 7 July 2022 at 14:42",
-                    "postID": 2,
-                    "category": "general",
-                    "story": "Test👍👍👍",
-                    "comments": [
-                        "Tester",
-                        "rrrrr"
-                    ],
-                    "reactions": {
-                        "fire": 0,
-                        "thumbs": 0,
-                        "smiley": 0
-                    },
-                    "gifs": "https://media2.giphy.com/media/ctuSwknNJevgaKXUnP/giphy.gif?cid=e9e62f4fscht0lge4mc14ldnapt23ucupigziew77qld1wiz&rid=giphy.gif&ct=g"
-                }
+                
             ]
         }
     }

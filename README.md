@@ -1,4 +1,4 @@
-#GotWins!#
+# GotWins! (By Joshua Warner, Stefan Yordanov and James Thompson) 
 
 ***Project Description***
 
@@ -88,23 +88,14 @@ jsonfile
 *Ensure other users can reply to posts*
 
 
-***License***
-
-
-
-
-***Screenshots of App***
-
-Screenshot 2022-07-07 at 12.55.57.png
-
-Screenshot 2022-07-07 at 12.58.40.png
-
-Screenshot 2022-07-07 at 12.59.12.png
-
-
 ***Wins***
 
+Most of the bullet points in the process section should be regarded as wins.
 
+
+***Challenges***
+
+The biggest challenge was creating this piece of work in, effectively, three days.
 
 
 
