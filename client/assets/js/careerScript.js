@@ -15,6 +15,10 @@ function getTime() {
     return new Intl.DateTimeFormat('en-GB', options1).format(now);
 }
 
+function refreshThePage() {
+    window.location.reload();
+}
+
 
 function fetchPosts() {
     fetch('https://gotwins.herokuapp.com/api/posts/career')
@@ -95,7 +99,9 @@ function fetchPosts() {
                                         postID: postIdBox,
                                     })
 
-                                })
+                                }).then(
+                                    refreshThePage()
+                                )
                             } else {
                                 alert('Please input something to post');
                             }
@@ -166,7 +172,9 @@ function fetchPosts() {
                                         postID: postIdBox,
                                     })
 
-                                })
+                                }).then(
+                                    refreshThePage()         
+                                )
                             } else {
                                 alert('Please input something to post');
                             }
@@ -256,7 +264,9 @@ function fetchPosts() {
                                         postID: postIdBox,
                                     })
 
-                                })
+                                }).then(
+                                    refreshThePage()
+                                )
                             } else {
                                 alert('Please input something to post');
                             }
@@ -343,7 +353,12 @@ function fetchPosts() {
                                         postID: postIdBox,
                                     })
 
-                                })
+                                }).then(
+                                    refreshThePage()
+                                )
+
+                                
+                                
                             } else {
                                 alert('Please input something to post');
                             }
@@ -366,41 +381,58 @@ function fetchPosts() {
 
 fetchPosts();
 
-submitBtnCareer.addEventListener('click', async (e) => {
+// submitBtnCareer.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     setTimeout(() => {
+//         window.location.reload();
+//     }, 1000);
+
+// }) 
+
+submitBtnCareer.addEventListener('click', (e) => {
     e.preventDefault();  
     const storyData = document.getElementById('new-post-career').value;
     console.log(storyData);
     let gifUrl = document.getElementById('gif-img').src;
     let postIDnumber = 0;
-    await fetch('https://gotwins.herokuapp.com/api/posts/career')
+    fetch('https://gotwins.herokuapp.com/api/posts/career')
     .then(response => response.text())
     .then(data => JSON.parse(data))
     .then(array => array.posts)
     .then(array => {
-        postIDnumber = array.length + 1;
-    })
-
-    let newObject = {
-        time: getTime(),
-        postID: postIDnumber, 
-        category: 'career', 
-        story: storyData, 
-        comments: [], 
-        reactions: {fire: 0,
-                    thumbs: 0,
-                     smiley: 0},
-        gifs: gifUrl,
-    }
-
-    console.log(newObject);
-    await fetch('https://gotwins.herokuapp.com/api/posts/career', {
+        return array.length + 1;
+    }).then(
+        number => {
+            let newObject = {
+                time: getTime(),
+                postID: number, 
+                category: 'career', 
+                story: storyData, 
+                comments: [], 
+                reactions: {fire: 0,
+                            thumbs: 0,
+                             smiley: 0},
+                gifs: gifUrl,
+            }
+            return newObject;
+        }
+    ).then(
+        newObject => {
+            fetch('https://gotwins.herokuapp.com/api/posts/career', {
         method: 'POST',
         body: JSON.stringify(newObject), 
         headers: {
             'Content-Type': 'application/json'
-        },
+        }
         
-    })
+        })
+     }).then(
+        () => {
+            refreshThePage();
+        }
+        
+     )
+    
 
 
 })
@@ -472,9 +504,9 @@ textarea.addEventListener("focus", () => {
     letterCount.textContent = maxLen - letters;
 });
 
-textarea.addEventListener("focusout", () => {
-    letterCount.style.display = "none";
-});
+// textarea.addEventListener("focusout", () => {
+//     letterCount.style.display = "none";
+// });
 
 const bubbleBox = document.querySelector("#bubble-box");
 
