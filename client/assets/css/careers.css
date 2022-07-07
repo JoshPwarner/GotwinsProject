@@ -199,6 +199,15 @@ main {
     cursor: pointer;
 }
 
+.emoji-btn-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.gif-img-downsize {
+    max-width: 250px;
+}
 .buttons {
     margin-top: 1rem;
     padding-left: 0.5rem;

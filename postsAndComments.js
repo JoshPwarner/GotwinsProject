@@ -6,80 +6,80 @@ const jsonParser = bodyParser.json();
 const urlEncodedParser = bodyParser.urlencoded({extended: false});
 const { readFileSync, writeFileSync, readFile, writeFile } = require('fs');  
 const jsonfile = require('jsonfile')
-const allJsonData = require('../../data.json');
+const allJsonData = require('./data.json');
 
 async function writeJSONCareer(postData){
-    let data = await jsonfile.readFile('../data.json', 'utf8');
+    let data = await jsonfile.readFile('./data.json', 'utf8');
     
         data.allPosts.career.posts.push(postData)
-        await jsonfile.writeFile('../data.json', data);
+        await jsonfile.writeFile('./data.json', data);
 
 }
 
 async function writeJSONCareerComments(postData, reqId){
-    let data = await jsonfile.readFile('../data.json', 'utf8');
+    let data = await jsonfile.readFile('./data.json', 'utf8');
     reqId = parseInt(reqId) - 1;
     data.allPosts.career.posts[reqId].comments.push(postData);
-    await jsonfile.writeFile('../data.json', data);
+    await jsonfile.writeFile('./data.json', data);
 
 }
 
 
 
 async function writeJSONFamily(postData){
-    let data = await jsonfile.readFile('../data.json', 'utf8');
+    let data = await jsonfile.readFile('./data.json', 'utf8');
     
         data.allPosts.family.posts.push(postData)
-        await jsonfile.writeFile('../data.json', data);
+        await jsonfile.writeFile('./data.json', data);
 
 }
 
 async function writeJSONFamilyComments(postData, reqId){
-    let data = await jsonfile.readFile('../data.json', 'utf8');
+    let data = await jsonfile.readFile('./data.json', 'utf8');
     reqId = parseInt(reqId) - 1;
     data.allPosts.family.posts[reqId].comments.push(postData);
-    await jsonfile.writeFile('../data.json', data);
+    await jsonfile.writeFile('./data.json', data);
 
 }
 
 
 
 async function writeJSONRelationships(postData){
-    let data = await jsonfile.readFile('../data.json', 'utf8');
+    let data = await jsonfile.readFile('./data.json', 'utf8');
     
         data.allPosts.relationships.posts.push(postData)
-        await jsonfile.writeFile('../data.json', data);
+        await jsonfile.writeFile('./data.json', data);
 
 }
 
 async function writeJSONRelationshipsComments(postData, reqId){
-    let data = await jsonfile.readFile('../data.json', 'utf8');
+    let data = await jsonfile.readFile('./data.json', 'utf8');
     reqId = parseInt(reqId) - 1;
     data.allPosts.relationships.posts[reqId].comments.push(postData);
-    await jsonfile.writeFile('../data.json', data);
+    await jsonfile.writeFile('./data.json', data);
 
 }
 
 async function writeJSONGeneral(postData){
-    let data = await jsonfile.readFile('../data.json', 'utf8');
+    let data = await jsonfile.readFile('./data.json', 'utf8');
     
         data.allPosts.general.posts.push(postData)
-        await jsonfile.writeFile('../data.json', data);
+        await jsonfile.writeFile('./data.json', data);
 
 }
 
 async function writeJSONGeneralComments(postData, reqId){
-    let data = await jsonfile.readFile('../data.json', 'utf8');
+    let data = await jsonfile.readFile('./data.json', 'utf8');
     reqId = parseInt(reqId) - 1;
     data.allPosts.general.posts[reqId].comments.push(postData);
-    await jsonfile.writeFile('../data.json', data);
+    await jsonfile.writeFile('./data.json', data);
 
 }
 
 
 
 function readJSONCareer() {
-    let wholeFile = readFileSync('../data.json', 'utf8');
+    let wholeFile = readFileSync('./data.json', 'utf8');
     wholeFile = JSON.parse(wholeFile);
     return wholeFile.allPosts.career;
 
@@ -87,7 +87,7 @@ function readJSONCareer() {
 
 function readJSONCareerId(idNumber) {
     idNumber = idNumber - 1;
-    let wholeFile = readFileSync('../data.json', 'utf8');
+    let wholeFile = readFileSync('./data.json', 'utf8');
     wholeFile = JSON.parse(wholeFile);
     return wholeFile.allPosts.career.posts[idNumber];
 
@@ -96,7 +96,7 @@ function readJSONCareerId(idNumber) {
 
 function readJSONCareerComments(idNumber) {
     idNumber = idNumber - 1;
-    let wholeFile = readFileSync('../data.json', 'utf8');
+    let wholeFile = readFileSync('./data.json', 'utf8');
     wholeFile = JSON.parse(wholeFile);
     return wholeFile.allPosts.career.posts[idNumber].comments;
 
@@ -104,7 +104,7 @@ function readJSONCareerComments(idNumber) {
 
 
 function readJSONFamily() {
-    let wholeFile = readFileSync('../data.json', 'utf8');
+    let wholeFile = readFileSync('./data.json', 'utf8');
     wholeFile = JSON.parse(wholeFile);
     return wholeFile.allPosts.family;
 
@@ -112,7 +112,7 @@ function readJSONFamily() {
 
 function readJSONFamilyId(idNumber) {
     idNumber = idNumber - 1;
-    let wholeFile = readFileSync('../data.json', 'utf8');
+    let wholeFile = readFileSync('./data.json', 'utf8');
     wholeFile = JSON.parse(wholeFile);
     return wholeFile.allPosts.family.posts[idNumber];
 
@@ -121,14 +121,14 @@ function readJSONFamilyId(idNumber) {
 
 function readJSONFamilyComments(idNumber) {
     idNumber = idNumber - 1;
-    let wholeFile = readFileSync('../data.json', 'utf8');
+    let wholeFile = readFileSync('./data.json', 'utf8');
     wholeFile = JSON.parse(wholeFile);
     return wholeFile.allPosts.family.posts[idNumber].comments;
 
 }
 
 function readJSONRelationships() {
-    let wholeFile = readFileSync('../data.json', 'utf8');
+    let wholeFile = readFileSync('./data.json', 'utf8');
     wholeFile = JSON.parse(wholeFile);
     return wholeFile.allPosts.relationships;
 
@@ -136,7 +136,7 @@ function readJSONRelationships() {
 
 function readJSONRelationshipsId(idNumber) {
     idNumber = idNumber - 1;
-    let wholeFile = readFileSync('../data.json', 'utf8');
+    let wholeFile = readFileSync('./data.json', 'utf8');
     wholeFile = JSON.parse(wholeFile);
     return wholeFile.allPosts.relationships.posts[idNumber];
 
@@ -145,7 +145,7 @@ function readJSONRelationshipsId(idNumber) {
 
 function readJSONRelationshipsComments(idNumber) {
     idNumber = idNumber - 1;
-    let wholeFile = readFileSync('../data.json', 'utf8');
+    let wholeFile = readFileSync('./data.json', 'utf8');
     wholeFile = JSON.parse(wholeFile);
     return wholeFile.allPosts.relationships.posts[idNumber].comments;
 
@@ -153,7 +153,7 @@ function readJSONRelationshipsComments(idNumber) {
 
 
 function readJSONGeneral() {
-    let wholeFile = readFileSync('../data.json', 'utf8');
+    let wholeFile = readFileSync('./data.json', 'utf8');
     wholeFile = JSON.parse(wholeFile);
     return wholeFile.allPosts.general;
 
@@ -161,7 +161,7 @@ function readJSONGeneral() {
 
 function readJSONGeneralId(idNumber) {
     idNumber = idNumber - 1;
-    let wholeFile = readFileSync('../data.json', 'utf8');
+    let wholeFile = readFileSync('./data.json', 'utf8');
     wholeFile = JSON.parse(wholeFile);
     return wholeFile.allPosts.general.posts[idNumber];
 
@@ -170,7 +170,7 @@ function readJSONGeneralId(idNumber) {
 
 function readJSONGeneralComments(idNumber) {
     idNumber = idNumber - 1;
-    let wholeFile = readFileSync('../data.json', 'utf8');
+    let wholeFile = readFileSync('./data.json', 'utf8');
     wholeFile = JSON.parse(wholeFile);
     return wholeFile.allPosts.general.posts[idNumber].comments;
 
