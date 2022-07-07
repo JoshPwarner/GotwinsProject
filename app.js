@@ -18,6 +18,7 @@ app.use(express.urlencoded({extended: false}));
 // app.use(cors({
 //     origin: 'http://127.0.0.1:5500'
 // }));
+app.use(bodyParser.json)
 
 app.use(cors());
 
@@ -27,16 +28,16 @@ app.use(express.static('./client'));
 
 app.use(express.static('./data.json'));
 
-app.use( express.static('./client/assets/css/style.css'));
 
-app.use( express.static('./client/assets/js/'));
+// app.use( express.static('./client/assets/css/style.css'));
 
-app.use( express.static('./client/assets/images'));
+// app.use( express.static('./client/assets/js/ca'));
+
+// app.use( express.static('./client/assets/images'));
 
 app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, './index.html'));
 })
-
 
 
 app.listen(port, () => {

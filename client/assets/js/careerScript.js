@@ -17,7 +17,7 @@ function getTime() {
 
 
 function fetchPosts() {
-    fetch('http://localhost:5000/api/posts/career')
+    fetch('https://gotwins.herokuapp.com/api/posts/career')
     .then(response => response.text())
     .then(data => JSON.parse(data))
     .then(result => {
@@ -81,7 +81,7 @@ function fetchPosts() {
                             e.preventDefault();
                             if (document.getElementById(`new-post-career-${postIdBox}`).value !== '') {
                                 console.log(document.getElementById(`new-post-career-${postIdBox}`).value);
-                                let url = 'http://localhost:5000/api/posts/career/';
+                                let url = 'https://gotwins.herokuapp.com/api/posts/career/';
                                 url += postIdBox;
                                 url += '/comments'
                                 let commentValue = document.getElementById(`new-post-career-${postIdBox}`).value;
@@ -152,7 +152,7 @@ function fetchPosts() {
                             e.preventDefault();
                             if (document.getElementById(`new-post-career-${postIdBox}`).value !== '') {
                                 console.log(document.getElementById(`new-post-career-${postIdBox}`).value);
-                                let url = 'http://localhost:5000/api/posts/career/';
+                                let url = 'https://gotwins.herokuapp.com/api/posts/career/';
                                 url += postIdBox;
                                 url += '/comments'
                                 let commentValue = document.getElementById(`new-post-career-${postIdBox}`).value;
@@ -242,7 +242,7 @@ function fetchPosts() {
                             e.preventDefault();
                             if (document.getElementById(`new-post-career-${postIdBox}`).value !== '') {
                                 console.log(document.getElementById(`new-post-career-${postIdBox}`).value);
-                                let url = 'http://localhost:5000/api/posts/career/';
+                                let url = 'https://gotwins.herokuapp.com/api/posts/career/';
                                 url += postIdBox;
                                 url += '/comments'
                                 let commentValue = document.getElementById(`new-post-career-${postIdBox}`).value;
@@ -329,7 +329,7 @@ function fetchPosts() {
                             e.preventDefault();
                             if (document.getElementById(`new-post-career-${postIdBox}`).value !== '') {
                                 console.log(document.getElementById(`new-post-career-${postIdBox}`).value);
-                                let url = 'http://localhost:5000/api/posts/career/';
+                                let url = 'https://gotwins.herokuapp.com/api/posts/career/';
                                 url += postIdBox;
                                 url += '/comments'
                                 let commentValue = document.getElementById(`new-post-career-${postIdBox}`).value;
@@ -372,7 +372,7 @@ submitBtnCareer.addEventListener('click', async (e) => {
     console.log(storyData);
     let gifUrl = document.getElementById('gif-img').src;
     let postIDnumber = 0;
-    await fetch('http://localhost:5000/api/posts/career')
+    await fetch('https://gotwins.herokuapp.com/api/posts/career')
     .then(response => response.text())
     .then(data => JSON.parse(data))
     .then(array => array.posts)
@@ -393,7 +393,7 @@ submitBtnCareer.addEventListener('click', async (e) => {
     }
 
     console.log(newObject);
-    await fetch('http://localhost:5000/api/posts/career', {
+    await fetch('https://gotwins.herokuapp.com/api/posts/career', {
         method: 'POST',
         body: JSON.stringify(newObject), 
         headers: {
