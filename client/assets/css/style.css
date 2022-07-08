@@ -94,12 +94,40 @@ main .hero {
     color: var(--text-white);
     line-height: 1.7;
     text-transform: uppercase;
+    animation: slideTop 1s ease-in-out;
+}
+
+@keyframes slideTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-10rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero .hero-content .subheading {
     font-size: 1.6rem;
     font-weight: 500;
     color: var(--text-white);
+    animation: slideBottom 1s ease-in-out;
+    animation-delay: 0.4s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes slideBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(8rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero .hero-content .hero-cta {
@@ -117,6 +145,33 @@ main .hero {
     text-decoration: none;
     width: 18rem;
     transition: all 0.3s ease-in-out;
+    animation: popUp 1s ease-out;
+    animation-delay: 0.9s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes popUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate(-50%, -60%) scale(0);
+        transform: translate(-50%, -60%) scale(0);
+    }
+
+    60% {
+        -webkit-transform: translate(-50%, -60%) scale(1.14);
+        transform: translate(-50%, -60%) scale(1.14);
+    }
+
+    80% {
+        -webkit-transform: translate(-50%, -60%) scale(0.95);
+        transform: translate(-50%, -60%) scale(0.95);
+    }
+
+    100% {
+        -webkit-transform: translate(-50%, -60%) scale(1);
+        transform: translate(-50%, -60%) scale(1);
+        opacity: 1;
+    }
 }
 
 .hero .hero-content .hero-cta > i {
