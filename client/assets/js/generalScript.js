@@ -47,7 +47,6 @@ function fetchPosts() {
                             </div>
                             <hr class="divider" />
                             <div class="emoji-btn-box">
-                                <button class="button add-emoji"><i class="fa-regular fa-face-grin"></i></button>
                                 <img class="gif-img-downsize" src="${gifsBox}">
                             </div>
                             <div class="add-comment">
@@ -116,7 +115,7 @@ function fetchPosts() {
                             </div>
                             <hr class="divider" />
                             <div class="emoji-btn-box">
-                                <button class="button add-emoji"><i class="fa-regular fa-face-grin"></i></button>
+                                
                             </div>
                             <div class="add-comment">
                                 <div class="form-box">
@@ -186,7 +185,7 @@ function fetchPosts() {
                             </div>
                             <hr class="divider" />
                             <div class="emoji-btn-box">
-                                <button class="button add-emoji"><i class="fa-regular fa-face-grin"></i></button>
+                                
                                 <img class="gif-img-downsize" src="${gifsBox}">
                             </div>
                             <div class="add-comment">
@@ -223,7 +222,7 @@ function fetchPosts() {
                             newCommentDiv.innerHTML = `<div class="avatar">
                                                     <i class="fa-solid fa-user"></i>
                                                 </div>
-                                                <p class="comment-text">${each}</p>`;
+                                                <p class="comment-text ml-2">${each}</p>`;
                             newCommentDiv.style.display = "flex";
                             newCommentDiv.style.alignItems = "center";
                             document.getElementById(`comment-container-general-${postIdBox}`).style.display = "flex";
@@ -274,7 +273,7 @@ function fetchPosts() {
                             </div>
                             <hr class="divider" />
                             <div class="emoji-btn-box">
-                                <button class="button add-emoji"><i class="fa-regular fa-face-grin"></i></button>
+                               
                             </div>
                             <div class="add-comment">
                                 <div class="form-box">
@@ -310,7 +309,7 @@ function fetchPosts() {
                             newCommentDiv.innerHTML = `<div class="avatar">
                                                     <i class="fa-solid fa-user"></i>
                                                 </div>
-                                                <p class="comment-text">${each}</p>`;
+                                                <p class="comment-text ml-2">${each}</p>`;
                             newCommentDiv.style.display = "flex";
                             newCommentDiv.style.alignItems = "center";
                             document.getElementById(`comment-container-general-${postIdBox}`).style.display = "flex";
