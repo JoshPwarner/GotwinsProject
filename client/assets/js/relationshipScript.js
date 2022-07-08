@@ -225,7 +225,7 @@ function fetchPosts() {
                             newCommentDiv.innerHTML = `<div class="avatar">
                                                     <i class="fa-solid fa-user"></i>
                                                 </div>
-                                                <p class="comment-text ml-1">${each}</p>`;
+                                                <p class="comment-text">${each}</p>`;
                             newCommentDiv.style.display = "flex";
                             newCommentDiv.style.alignItems = "center";
                             document.getElementById(`comment-container-relationships-${postIdBox}`).style.display =
@@ -315,10 +315,9 @@ function fetchPosts() {
                             newCommentDiv.innerHTML = `<div class="avatar">
                                                     <i class="fa-solid fa-user"></i>
                                                 </div>
-                                                <p class="comment-text ml-1">${each}</p>`;
+                                                <p class="comment-text">${each}</p>`;
                             newCommentDiv.style.display = "flex";
                             newCommentDiv.style.alignItems = "center";
-                            newCommentDiv.style.gap = "1rem";
                             document.getElementById(`comment-container-relationships-${postIdBox}`).style.display =
                                 "flex";
                             document
