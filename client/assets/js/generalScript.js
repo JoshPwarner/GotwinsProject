@@ -1,42 +1,41 @@
-const submitBtnGeneral = document.getElementById('submit-button-general');
+const submitBtnGeneral = document.getElementById("submit-button-general");
 
 function getTime() {
     const now = new Date();
     const options1 = {
-        hour: 'numeric',
+        hour: "numeric",
         hour12: false,
-        minute: 'numeric',
-        weekday: 'long',
-        day: 'numeric',
-        month: 'long', 
-        year: 'numeric',
+        minute: "numeric",
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
     };
 
-    return new Intl.DateTimeFormat('en-GB', options1).format(now);
+    return new Intl.DateTimeFormat("en-GB", options1).format(now);
 }
 
 function refreshThePage() {
     window.location.reload();
 }
 
-
 function fetchPosts() {
-    fetch('https://gotwins.herokuapp.com/api/posts/general')
-    .then(response => response.text())
-    .then(data => JSON.parse(data))
-    .then(result => {
-        result.posts.forEach(item => {
-                    let timeBox = item.time;
-                    let postIdBox = item.postID;
-                    let categoryBox = item.category;
-                    let storyBox = item.story;
-                    let commentsBox = item.comments;
-                    let reactionsBox = item.reactions;
-                    let gifsBox = item.gifs;
-                    if (commentsBox.length === 0) {
-                        if (gifsBox.includes('general') === false) {
-                            let newDiv = document.createElement('div');
-                            let overallPost = `<section class="post">
+    fetch("https://gotwins.herokuapp.com/api/posts/general")
+        .then((response) => response.text())
+        .then((data) => JSON.parse(data))
+        .then((result) => {
+            result.posts.forEach((item) => {
+                let timeBox = item.time;
+                let postIdBox = item.postID;
+                let categoryBox = item.category;
+                let storyBox = item.story;
+                let commentsBox = item.comments;
+                let reactionsBox = item.reactions;
+                let gifsBox = item.gifs;
+                if (commentsBox.length === 0) {
+                    if (gifsBox.includes("general") === false) {
+                        let newDiv = document.createElement("div");
+                        let overallPost = `<section class="post">
                             <div class="date">
                                 <div class="avatar">
                                     <i class="fa-solid fa-user"></i>
@@ -76,116 +75,106 @@ function fetchPosts() {
                                     
                                 </div>
                             </div>
-                        </section>`
+                        </section>`;
                         newDiv.innerHTML = overallPost;
-                        newDiv.style.margin = '2rem 0 2rem 0';
-                        document.getElementById('posts-container-general').insertAdjacentElement('afterbegin', newDiv);
-                        
-                        document.getElementById(`submit-btn-${postIdBox}`).addEventListener('click', (e) => {
+                        newDiv.style.margin = "2rem 0 2rem 0";
+                        document.getElementById("posts-container-general").insertAdjacentElement("afterbegin", newDiv);
+
+                        document.getElementById(`submit-btn-${postIdBox}`).addEventListener("click", (e) => {
                             e.preventDefault();
-                            if (document.getElementById(`new-post-general-${postIdBox}`).value !== '') {
+                            if (document.getElementById(`new-post-general-${postIdBox}`).value !== "") {
                                 console.log(document.getElementById(`new-post-general-${postIdBox}`).value);
-                                let url = 'https://gotwins.herokuapp.com/api/posts/general/';
+                                let url = "https://gotwins.herokuapp.com/api/posts/general/";
                                 url += postIdBox;
-                                url += '/comments'
+                                url += "/comments";
                                 let commentValue = document.getElementById(`new-post-general-${postIdBox}`).value;
                                 fetch(url, {
-                                    method: 'POST',
+                                    method: "POST",
                                     headers: {
-                                        'Content-Type': 'application/json'
+                                        "Content-Type": "application/json",
                                     },
                                     body: JSON.stringify({
-                                        comment: commentValue, 
+                                        comment: commentValue,
                                         postID: postIdBox,
-                                    })
-
-                                }).then(
-                                    refreshThePage()
-                                )
+                                    }),
+                                }).then(refreshThePage());
                             } else {
-                                alert('Please input something to post');
+                                alert("Please input something to post");
                             }
-                            
-                        })
-
-                        } else {
-                            let newDiv = document.createElement('div');
-                            let overallPost = `<section class="post">
-                            <div class="date">
-                                <div class="avatar">
-                                    <i class="fa-solid fa-user"></i>
-                                </div>
-                                <p class="date-text">${timeBox}</p>
-                            </div>
-                            <div class="post-content">
-                                <p>${storyBox}</p>
-                            </div>
-                            <hr class="divider" />
-                            <div class="emoji-btn-box">
-                                <button class="button add-emoji"><i class="fa-regular fa-face-grin"></i></button>
-                            </div>
-                            <div class="add-comment">
-                                <div class="form-box">
-                                    <div class="avatar">
-                                        <i class="fa-solid fa-user"></i>
-                                    </div>
-                                    <form class="new-post-form">
-                                        <textarea
-                                            name="new-post"
-                                            id="new-post-general-${postIdBox}"
-                                            cols="30"
-                                            rows="2"
-                                            placeholder="Add a comment..."
-                                            required
-                                        ></textarea>
-                                        <div class="buttons">
-                                            <button id="submit-btn-${postIdBox}" class="button submit" type="submit">Post</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="comments">
-                                <div id="comment-container-general-${postIdBox}" class="comment-container">
-                                    
-                                </div>
-                            </div>
-                        </section>`
-                        newDiv.innerHTML = overallPost;
-                        newDiv.style.margin = '2rem 0 2rem 0';
-                        document.getElementById('posts-container-general').insertAdjacentElement('afterbegin', newDiv);
-                        
-                        document.getElementById(`submit-btn-${postIdBox}`).addEventListener('click', (e) => {
-                            e.preventDefault();
-                            if (document.getElementById(`new-post-general-${postIdBox}`).value !== '') {
-                                console.log(document.getElementById(`new-post-general-${postIdBox}`).value);
-                                let url = 'https://gotwins.herokuapp.com/api/posts/general/';
-                                url += postIdBox;
-                                url += '/comments'
-                                let commentValue = document.getElementById(`new-post-general-${postIdBox}`).value;
-                                fetch(url, {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify({
-                                        comment: commentValue, 
-                                        postID: postIdBox,
-                                    })
-
-                                }).then(
-                                    refreshThePage()         
-                                )
-                            } else {
-                                alert('Please input something to post');
-                            }
-                            
-                        })
-
-                        }
+                        });
                     } else {
-                        if (gifsBox.includes('general') === false) {
-                            let newDiv = document.createElement('div');
-                            let overallPost = `<section class="post">
+                        let newDiv = document.createElement("div");
+                        let overallPost = `<section class="post">
+                            <div class="date">
+                                <div class="avatar">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <p class="date-text">${timeBox}</p>
+                            </div>
+                            <div class="post-content">
+                                <p>${storyBox}</p>
+                            </div>
+                            <hr class="divider" />
+                            <div class="emoji-btn-box">
+                                <button class="button add-emoji"><i class="fa-regular fa-face-grin"></i></button>
+                            </div>
+                            <div class="add-comment">
+                                <div class="form-box">
+                                    <div class="avatar">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+                                    <form class="new-post-form">
+                                        <textarea
+                                            name="new-post"
+                                            id="new-post-general-${postIdBox}"
+                                            cols="30"
+                                            rows="2"
+                                            placeholder="Add a comment..."
+                                            required
+                                        ></textarea>
+                                        <div class="buttons">
+                                            <button id="submit-btn-${postIdBox}" class="button submit" type="submit">Post</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="comments">
+                                <div id="comment-container-general-${postIdBox}" class="comment-container">
+                                    
+                                </div>
+                            </div>
+                        </section>`;
+                        newDiv.innerHTML = overallPost;
+                        newDiv.style.margin = "2rem 0 2rem 0";
+                        document.getElementById("posts-container-general").insertAdjacentElement("afterbegin", newDiv);
+
+                        document.getElementById(`submit-btn-${postIdBox}`).addEventListener("click", (e) => {
+                            e.preventDefault();
+                            if (document.getElementById(`new-post-general-${postIdBox}`).value !== "") {
+                                console.log(document.getElementById(`new-post-general-${postIdBox}`).value);
+                                let url = "https://gotwins.herokuapp.com/api/posts/general/";
+                                url += postIdBox;
+                                url += "/comments";
+                                let commentValue = document.getElementById(`new-post-general-${postIdBox}`).value;
+                                fetch(url, {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify({
+                                        comment: commentValue,
+                                        postID: postIdBox,
+                                    }),
+                                }).then(refreshThePage());
+                            } else {
+                                alert("Please input something to post");
+                            }
+                        });
+                    }
+                } else {
+                    if (gifsBox.includes("general") === false) {
+                        let newDiv = document.createElement("div");
+                        let overallPost = `<section class="post">
                             <div class="date">
                                 <div class="avatar">
                                     <i class="fa-solid fa-user"></i>
@@ -225,57 +214,55 @@ function fetchPosts() {
                                     
                                 </div>
                             </div>
-                        </section>`
+                        </section>`;
                         newDiv.innerHTML = overallPost;
-                        newDiv.style.margin = '2rem 0 2rem 0';
-                        document.getElementById('posts-container-general').insertAdjacentElement('afterbegin', newDiv);
-                        commentsBox.forEach(each => {
-                            let newCommentDiv = document.createElement('div');
+                        newDiv.style.margin = "2rem 0 2rem 0";
+                        document.getElementById("posts-container-general").insertAdjacentElement("afterbegin", newDiv);
+                        commentsBox.forEach((each) => {
+                            let newCommentDiv = document.createElement("div");
                             newCommentDiv.innerHTML = `<div class="avatar">
                                                     <i class="fa-solid fa-user"></i>
                                                 </div>
-                                                <p class="comment-text">${each}</p>`
-                            newCommentDiv.style.display = 'flex';
-                            newCommentDiv.style.alignItems = 'center';
-                            document.getElementById(`comment-container-general-${postIdBox}`).style.display = 'flex';
-                            document.getElementById(`comment-container-general-${postIdBox}`).insertAdjacentElement('beforeend', newCommentDiv)
+                                                <p class="comment-text">${each}</p>`;
+                            newCommentDiv.style.display = "flex";
+                            newCommentDiv.style.alignItems = "center";
+                            document.getElementById(`comment-container-general-${postIdBox}`).style.display = "flex";
+                            document
+                                .getElementById(`comment-container-general-${postIdBox}`)
+                                .insertAdjacentElement("beforeend", newCommentDiv);
                             // document.querySelectorAll('.comment-text').style.margin = "0 0 0 1rem";
-                            
-                        })
-                        document.getElementById(`comment-container-general-${postIdBox}`).style.display = 'flex';
-                        document.getElementById(`comment-container-general-${postIdBox}`).style.flexDirection = 'column';
-                        document.getElementById(`comment-container-general-${postIdBox}`).style.alignItems = 'flex-start';
+                        });
+                        document.getElementById(`comment-container-general-${postIdBox}`).style.display = "flex";
+                        document.getElementById(`comment-container-general-${postIdBox}`).style.flexDirection =
+                            "column";
+                        document.getElementById(`comment-container-general-${postIdBox}`).style.alignItems =
+                            "flex-start";
 
-                        document.getElementById(`submit-btn-${postIdBox}`).addEventListener('click', (e) => {
+                        document.getElementById(`submit-btn-${postIdBox}`).addEventListener("click", (e) => {
                             e.preventDefault();
-                            if (document.getElementById(`new-post-general-${postIdBox}`).value !== '') {
+                            if (document.getElementById(`new-post-general-${postIdBox}`).value !== "") {
                                 console.log(document.getElementById(`new-post-general-${postIdBox}`).value);
-                                let url = 'https://gotwins.herokuapp.com/api/posts/general/';
+                                let url = "https://gotwins.herokuapp.com/api/posts/general/";
                                 url += postIdBox;
-                                url += '/comments'
+                                url += "/comments";
                                 let commentValue = document.getElementById(`new-post-general-${postIdBox}`).value;
                                 fetch(url, {
-                                    method: 'POST',
+                                    method: "POST",
                                     headers: {
-                                        'Content-Type': 'application/json'
+                                        "Content-Type": "application/json",
                                     },
                                     body: JSON.stringify({
-                                        comment: commentValue, 
+                                        comment: commentValue,
                                         postID: postIdBox,
-                                    })
-
-                                }).then(
-                                    refreshThePage()
-                                )
+                                    }),
+                                }).then(refreshThePage());
                             } else {
-                                alert('Please input something to post');
+                                alert("Please input something to post");
                             }
-                            
-                        })
-
-                        } else {
-                            let newDiv = document.createElement('div');
-                            let overallPost = `<section class="post">
+                        });
+                    } else {
+                        let newDiv = document.createElement("div");
+                        let overallPost = `<section class="post">
                             <div class="date">
                                 <div class="avatar">
                                     <i class="fa-solid fa-user"></i>
@@ -314,122 +301,98 @@ function fetchPosts() {
                                     
                                 </div>
                             </div>
-                        </section>`
+                        </section>`;
                         newDiv.innerHTML = overallPost;
-                        newDiv.style.margin = '2rem 0 2rem 0';
-                        document.getElementById('posts-container-general').insertAdjacentElement('afterbegin', newDiv);
-                        commentsBox.forEach(each => {
-                            let newCommentDiv = document.createElement('div');
+                        newDiv.style.margin = "2rem 0 2rem 0";
+                        document.getElementById("posts-container-general").insertAdjacentElement("afterbegin", newDiv);
+                        commentsBox.forEach((each) => {
+                            let newCommentDiv = document.createElement("div");
                             newCommentDiv.innerHTML = `<div class="avatar">
                                                     <i class="fa-solid fa-user"></i>
                                                 </div>
-                                                <p class="comment-text">${each}</p>`
-                            newCommentDiv.style.display = 'flex';
-                            newCommentDiv.style.alignItems = 'center';
-                            document.getElementById(`comment-container-general-${postIdBox}`).style.display = 'flex';
-                            document.getElementById(`comment-container-general-${postIdBox}`).insertAdjacentElement('beforeend', newCommentDiv)
+                                                <p class="comment-text">${each}</p>`;
+                            newCommentDiv.style.display = "flex";
+                            newCommentDiv.style.alignItems = "center";
+                            document.getElementById(`comment-container-general-${postIdBox}`).style.display = "flex";
+                            document
+                                .getElementById(`comment-container-general-${postIdBox}`)
+                                .insertAdjacentElement("beforeend", newCommentDiv);
                             // document.querySelectorAll('.comment-text').style.margin = "0 0 0 1rem";
-                            
-                        })
-                        document.getElementById(`comment-container-general-${postIdBox}`).style.display = 'flex';
-                        document.getElementById(`comment-container-general-${postIdBox}`).style.flexDirection = 'column';
-                        document.getElementById(`comment-container-general-${postIdBox}`).style.alignItems = 'flex-start';
+                        });
+                        document.getElementById(`comment-container-general-${postIdBox}`).style.display = "flex";
+                        document.getElementById(`comment-container-general-${postIdBox}`).style.flexDirection =
+                            "column";
+                        document.getElementById(`comment-container-general-${postIdBox}`).style.alignItems =
+                            "flex-start";
 
-                        document.getElementById(`submit-btn-${postIdBox}`).addEventListener('click', (e) => {
+                        document.getElementById(`submit-btn-${postIdBox}`).addEventListener("click", (e) => {
                             e.preventDefault();
-                            if (document.getElementById(`new-post-general-${postIdBox}`).value !== '') {
+                            if (document.getElementById(`new-post-general-${postIdBox}`).value !== "") {
                                 console.log(document.getElementById(`new-post-general-${postIdBox}`).value);
-                                let url = 'https://gotwins.herokuapp.com/api/posts/general/';
+                                let url = "https://gotwins.herokuapp.com/api/posts/general/";
                                 url += postIdBox;
-                                url += '/comments'
+                                url += "/comments";
                                 let commentValue = document.getElementById(`new-post-general-${postIdBox}`).value;
                                 fetch(url, {
-                                    method: 'POST',
+                                    method: "POST",
                                     headers: {
-                                        'Content-Type': 'application/json'
+                                        "Content-Type": "application/json",
                                     },
                                     body: JSON.stringify({
-                                        comment: commentValue, 
+                                        comment: commentValue,
                                         postID: postIdBox,
-                                    })
-
-                                }).then(
-                                    refreshThePage()
-                                )
-
-                                
-                                
+                                    }),
+                                }).then(refreshThePage());
                             } else {
-                                alert('Please input something to post');
+                                alert("Please input something to post");
                             }
-                            
-                        })
-
-
-                        }
-                            }
-                            
-                        })
-                
-            })
-        
-             
+                        });
+                    }
+                }
+            });
+        });
 }
-    
-
-
 
 fetchPosts();
 
-
-submitBtnGeneral.addEventListener('click', (e) => {
-    e.preventDefault();  
-    const storyData = document.getElementById('new-post-general').value;
+submitBtnGeneral.addEventListener("click", (e) => {
+    e.preventDefault();
+    const storyData = document.getElementById("new-post-general").value;
     console.log(storyData);
-    let gifUrl = document.getElementById('gif-img').src;
+    let gifUrl = document.getElementById("gif-img").src;
     let postIDnumber = 0;
-    fetch('https://gotwins.herokuapp.com/api/posts/general')
-    .then(response => response.text())
-    .then(data => JSON.parse(data))
-    .then(array => array.posts)
-    .then(array => {
-        return array.length + 1;
-    }).then(
-        number => {
+    fetch("https://gotwins.herokuapp.com/api/posts/general")
+        .then((response) => response.text())
+        .then((data) => JSON.parse(data))
+        .then((array) => array.posts)
+        .then((array) => {
+            return array.length + 1;
+        })
+        .then((number) => {
             let newObject = {
                 time: getTime(),
-                postID: number, 
-                category: 'general', 
-                story: storyData, 
-                comments: [], 
-                reactions: {fire: 0,
-                            thumbs: 0,
-                             smiley: 0},
+                postID: number,
+                category: "general",
+                story: storyData,
+                comments: [],
+                reactions: { fire: 0, thumbs: 0, smiley: 0 },
                 gifs: gifUrl,
-            }
+            };
             return newObject;
-        }
-    ).then(
-        newObject => {
-            fetch('https://gotwins.herokuapp.com/api/posts/general', {
-        method: 'POST',
-        body: JSON.stringify(newObject), 
-        headers: {
-            'Content-Type': 'application/json'
-        }
-        
         })
-     }).then(
-        () => {
+        .then((newObject) => {
+            fetch("https://gotwins.herokuapp.com/api/posts/general", {
+                method: "POST",
+                body: JSON.stringify(newObject),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+        })
+        .then(() => {
             refreshThePage();
-        }
-        
-     )
-    
-
-
-})
-
+        });
+});
 
 const apiKey = "AkieEAtmUH3opEz3lIrtcV3ELMZ3Kmwk";
 
@@ -514,7 +477,7 @@ emojiArray.forEach((el) => {
     el.addEventListener("click", (e) => {
         textarea.value = textarea.value + e.target.innerText;
         setTimeout(() => {
-            bubbleBox.classList.toggle('appear');
-        }, 100)
+            bubbleBox.classList.toggle("appear");
+        }, 100);
     });
 });

@@ -151,7 +151,7 @@ main {
     border-radius: 1.2rem;
 }
 
-#remainig-letters {
+#remaining-letters {
     display: none;
     position: absolute;
     right: 0.5rem;
@@ -249,6 +249,7 @@ main {
 
 .posts-box {
     margin-top: 4rem;
+    padding-bottom: 4rem;
 }
 
 .post {
@@ -289,7 +290,7 @@ main {
 
 .comments {
     margin-top: 3rem;
-    padding-left: 4rem;
+    padding-left: 8rem;
 }
 
 .comment-container {
@@ -413,6 +414,13 @@ footer .socials .social-list li .social-link i {
     header {
         padding-inline: 10rem;
     }
+
+    .container {
+        max-width: 800px;
+    }
+}
+
+@media only screen and (min-width: 1024) {
 }
 
 @media only screen and (min-width: 1200px) {
@@ -422,5 +430,15 @@ footer .socials .social-list li .social-link i {
 
     html {
         font-size: 90%;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    header {
+        padding-inline: 25rem;
+    }
+
+    .container {
+        max-width: 900px;
     }
 }
