@@ -151,7 +151,7 @@ main {
     border-radius: 1.2rem;
 }
 
-#remainig-letters {
+#remaining-letters {
     display: none;
     position: absolute;
     right: 0.5rem;
